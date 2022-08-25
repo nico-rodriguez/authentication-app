@@ -1,0 +1,122 @@
+.profile-header {
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-header__user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.profile-header__user-image {
+  border-radius: 8px;
+}
+
+.profile-header__user-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: -0.035em;
+  color: #333333;
+}
+
+@media only screen and (max-width: 425px) {
+  .profile-header__user-name {
+    display: none;
+  }
+}
+
+.profile-header__user-name::after {
+  content: '  \e5c5';
+  font-size: 1.6rem;
+}
+
+.profile-header__user-info:focus .profile-header__user-name::after {
+  content: '  \e5c7';
+}
+
+.profile-header__dropdown {
+  background-color: #fff;
+  width: 25ch;
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.profile-header__user-info:focus-within .profile-header__dropdown {
+  display: block;
+}
+
+.profile-header__dropdown > * {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.profile-header__dropdown > *:hover {
+  background: #f2f2f2;
+}
+
+.profile-header__dropdown > *:nth-child(1)::before {
+  content: '\e853';
+}
+
+.profile-header__dropdown > *:nth-child(2)::before {
+  content: '\f233';
+}
+
+.profile-header__dropdown > *:nth-child(3) {
+  padding: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+.profile-header__dropdown > *:last-child::before {
+  content: '\e9ba';
+}
+
+.profile-header__dropdown > *::before {
+  margin-right: 8px;
+  font-size: 1.4rem;
+  vertical-align: bottom;
+}
+
+.profile-header__dropdown > *:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+.profile-header__dropdown > *:last-child {
+  color: #eb5757;
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .profile-header,
+  .profile-header__user-name,
+  .profile-header__dropdown {
+    color: #e0e0e0;
+  }
+
+  .profile-header__dropdown {
+    background-color: #333333;
+  }
+
+  .profile-header__dropdown > *:not(:last-child):hover {
+    color: #333333;
+  }
+}

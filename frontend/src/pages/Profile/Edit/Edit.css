@@ -1,0 +1,52 @@
+.profile-edit__back-link {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.035em;
+  color: #2d9cdb;
+}
+
+@media only screen and (max-width: 425px) {
+  .profile-edit__back-link {
+    padding: 0 24px;
+  }
+}
+
+.profile-edit__main {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 48px;
+  margin-top: 24px;
+}
+
+@media only screen and (max-width: 425px) {
+  .profile-edit__main {
+    border-color: transparent;
+    padding: 24px;
+  }
+}
+
+.profile-edit__title {
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+  letter-spacing: -0.035em;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.profile-edit__description {
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.035em;
+  color: #828282;
+}
+
+@media (prefers-color-scheme: dark) {
+  .profile-edit__title {
+    color: #ffffff;
+  }
+
+  .profile-edit__description {
+    color: #e0e0e0;
+  }
+}

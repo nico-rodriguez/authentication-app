@@ -1,0 +1,30 @@
+{
+  "id": "102150585292587677679",
+  "displayName": "Nicolás Rodríguez",
+  "name": {
+    "familyName": "Rodríguez",
+    "givenName": "Nicolás"
+  },
+  "emails": [
+    {
+      "value": "marconicolasrodriguez@gmail.com",
+      "verified": true
+    }
+  ],
+  "photos": [
+    {
+      "value": "https: //lh3.googleusercontent.com/a-/AFdZucq1IW56_4IpLLctV4Kl2ad-aQseuAm-W-VFtHNeEA=s96-c"
+    }
+  ],
+  "provider": "google",
+  "_json": {
+    "sub": "102150585292587677679",
+    "name": "Nicolás Rodríguez",
+    "given_name": "Nicolás",
+    "family_name": "Rodríguez",
+    "picture": "https: //lh3.googleusercontent.com/a-/AFdZucq1IW56_4IpLLctV4Kl2ad-aQseuAm-W-VFtHNeEA=s96-c",
+    "email": "marconicolasrodriguez@gmail.com",
+    "email_verified": true,
+    "locale": "en"
+  }
+}

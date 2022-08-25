@@ -1,0 +1,56 @@
+.form {
+  margin-top: 32px;
+}
+
+.form__email-input {
+  margin-bottom: 14px;
+}
+
+.form__password-input {
+  margin-bottom: 27px;
+}
+
+.form__email-input,
+.form__password-input {
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  padding: 6px;
+  width: 100%;
+}
+
+.form__email-input::placeholder,
+.form__password-input::placeholder {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.035em;
+  color: #828282;
+}
+
+.form__button {
+  background: #2f80ed;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  padding: 6px 0;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.alternatives__header {
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: -0.035em;
+  color: #828282;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.alternatives__items {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}

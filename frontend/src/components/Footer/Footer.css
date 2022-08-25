@@ -1,0 +1,34 @@
+.footer {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media only screen and (max-width: 425px) {
+  .footer {
+    padding: 0 16px;
+    margin-top: auto;
+    margin-bottom: 16px;
+  }
+}
+
+.footer__item {
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: -0.035em;
+  color: #828282;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.footer__link {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer__item {
+    color: #e0e0e0;
+  }
+}

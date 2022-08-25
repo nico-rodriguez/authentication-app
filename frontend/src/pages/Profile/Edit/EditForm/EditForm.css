@@ -1,0 +1,125 @@
+.profile-edit-form__item:first-child {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.profile-edit-form__photo-input {
+  display: none;
+}
+
+#photo-input-label {
+  position: relative;
+  display: inline-block;
+}
+
+#photo-input-label::after {
+  content: '\e412';
+  font-family: 'Material Symbols Rounded';
+  font-size: 2rem;
+  color: #fff;
+  position: absolute;
+  top: calc(36px - 1rem);
+  left: calc(36px - 1rem);
+}
+
+#photo-input-label img {
+  border-radius: 8px;
+}
+
+#photo-input-text {
+  display: inline-block;
+  margin-left: 24px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.035em;
+  color: #828282;
+}
+
+.profile-edit-form__item textarea {
+  resize: none;
+}
+
+.profile-edit-form__item:not(:first-child) label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+}
+
+.profile-edit-form__item:not(:first-child) > *:nth-child(2) {
+  margin-bottom: 24px;
+}
+
+.profile-edit-form__item:not(:first-child) > *:nth-child(2):not(.iti) {
+  border: 1px solid #828282;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+  width: min(40ch, 100%);
+}
+
+.iti {
+  width: 100%;
+}
+
+.iti input {
+  width: min(40ch, 100%);
+  border: 1px solid #828282;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+}
+
+.profile-edit-form__item:not(:first-child) input::placeholder,
+.profile-edit-form__item textarea::placeholder {
+  color: #bdbdbd;
+}
+
+.profile-edit-form__show-password-button {
+  border-radius: 12px;
+  background: none;
+  margin-left: 5px;
+  color: #828282;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .profile-edit-form__show-password-button {
+    color: #ffffff;
+  }
+}
+
+.profile-edit-form__submit-button {
+  background: #2f80ed;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  #photo-input-text {
+    color: #e0e0e0;
+  }
+
+  .profile-edit-form__item:not(:first-child) label {
+    color: #e0e0e0;
+  }
+}
