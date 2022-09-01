@@ -5,10 +5,10 @@ import Header from './Header';
 
 import './ProfileWrapper.css';
 
-export default function ProfileWrapper() {
+export default function ProfileWrapper({ userName, userPhoto }) {
   return (
     <div className='profile-page'>
-      <Header />
+      <Header userName={userName} userPhoto={userPhoto} />
       <div className='profile-wrapper'>
         <Outlet />
         <Footer />

@@ -6,7 +6,7 @@ import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const EditForm = () => {
+const EditForm = ({ setUserData }) => {
   const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
   const [showPassword, setShowPassword] = useState(false);
 
@@ -63,8 +63,7 @@ const EditForm = () => {
 
     const user = await userService.editProfile(editFields);
     if (user) {
-      userService.saveUserPhoto(user.photo);
-      userService.saveUserName(user.name);
+      setUserData(user.name, user.photo);
       const form = event.target;
       form.reset();
       navigate('/profile');

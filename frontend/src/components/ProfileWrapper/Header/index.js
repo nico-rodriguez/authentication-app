@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 import userService from 'services/user';
 import { useEffect, useState } from 'react';
 
-export default function Header() {
-  const [userName, setUserName] = useState(() => userService.getUserName());
-  const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
+export default function Header({ userName, userPhoto }) {
   const logo = matchMedia('(prefers-color-scheme: dark)').matches
     ? logoDarkTheme
     : logoLightTheme;
 
-  useEffect(() => {
-    userService.getProfile().then(({ name, photo }) => {
-      setUserName(name);
-      setUserPhoto(photo);
-    });
-  }, []);
+  // useEffect(() => {
+  //   userService.getProfile().then(({ name, photo }) => {
+  //     setUserName(name);
+  //     setUserPhoto(photo);
+  //   });
+  // }, []);
 
   return (
     <header className='profile-header'>

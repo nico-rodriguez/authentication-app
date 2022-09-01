@@ -18,8 +18,10 @@ const login = async (email, password) => {
 };
 
 const getProfile = async () => {
-  const user = await axios.get('profile');
-  return user;
+  try {
+    const user = await axios.get('profile');
+    return user;
+  } catch (error) {}
 };
 
 const editProfile = async ({ photo, name, bio, phone, email, password }) => {
@@ -43,16 +45,16 @@ const editProfile = async ({ photo, name, bio, phone, email, password }) => {
 };
 
 const saveUserPhoto = (photoURL) => {
-  sessionStorage.setItem('userPhoto', photoURL);
+  sessionStorage.setItem('user-photo', photoURL);
 };
 
-const getUserPhoto = () => sessionStorage.getItem('userPhoto');
+const getUserPhoto = () => sessionStorage.getItem('user-photo');
 
 const saveUserName = (name) => {
-  sessionStorage.setItem('userName', name);
+  sessionStorage.setItem('user-name', name);
 };
 
-const getUserName = () => sessionStorage.getItem('userName');
+const getUserName = () => sessionStorage.getItem('user-name');
 
 const logout = async () => {
   await axios.get('logout');

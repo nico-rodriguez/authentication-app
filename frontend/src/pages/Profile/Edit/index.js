@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Edit.css';
 import EditForm from './EditForm';
 
-const Edit = () => {
+const Edit = ({ setUserData }) => {
   return (
     <div className='profile-edit'>
       <Link to='/profile' className='profile-edit__back-link'>
@@ -13,7 +13,7 @@ const Edit = () => {
         <p className='profile-edit__description'>
           Changes will be reflected to every services
         </p>
-        <EditForm />
+        <EditForm setUserData={setUserData} />
       </main>
     </div>
   );

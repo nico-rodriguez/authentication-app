@@ -4,7 +4,7 @@ import userService from 'services/user';
 
 import './Profile.css';
 
-export default function Profile() {
+export default function Profile({ setUserData }) {
   const [user, setUser] = useState({
     photo: '',
     name: '...',
@@ -15,6 +15,7 @@ export default function Profile() {
 
   useEffect(() => {
     userService.getProfile().then(({ photo, name, bio, phone, email }) => {
+      setUserData(name, photo);
       setUser((user) => {
         userService.saveUserName(name);
         userService.saveUserPhoto(photo);
