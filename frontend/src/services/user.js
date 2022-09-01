@@ -5,6 +5,7 @@ const signup = async (email, password) => {
   try {
     await axios.post('signup', { email, password });
     toast.success('Signup successful');
+    return true;
   } catch (error) {}
 };
 
@@ -12,6 +13,7 @@ const login = async (email, password) => {
   try {
     await axios.post('login', { email, password });
     toast.success('Login successful');
+    return true;
   } catch (error) {}
 };
 

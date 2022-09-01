@@ -20,7 +20,6 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({
-  // dest: 'uploads/',
   storage,
   limits: {
     // Max file size (1MB)
@@ -38,26 +37,29 @@ router.post('/edit', isUserAuth, upload, async function (req, res) {
   const { user, file } = req;
 
   const { isValid: isPhoneValid } = validatePhone(phone);
-  if (!isPhoneValid) {
+  if (phone && !isPhoneValid) {
     res.statusCode = 400;
     return res.json('Invalid phone number');
   }
 
-  if ((!email && password) || (email && !password)) {
-    res.statusCode = 400;
-    return res.json('Email and password must be set together');
+  if (password) {
+    const userUpdated = await user.setPassword(password);
+    await userUpdated.save();
   }
 
-  password && (await user.setPassword(password));
+  let updateFields = {};
+  if (file) {
+    const photo = cloudinary.url(`${STORAGE_FOLDER_NAME}/${req.user._id}.png`, {
+      width: 72,
+      height: 72,
+      crop: 'fill',
+    });
 
-  const photo = cloudinary.url(`${STORAGE_FOLDER_NAME}/${req.user._id}.png`, {
-    width: 72,
-    height: 72,
-    crop: 'fill',
-  });
+    updateFields.photo = photo;
+  }
 
-  const updateFields = {
-    photo,
+  updateFields = {
+    ...updateFields,
     ...filterFalsyProps({ name, bio, phone, email }),
   };
 

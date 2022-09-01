@@ -4,6 +4,7 @@ import userService from 'services/user';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './EditForm.css';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const EditForm = () => {
   const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
@@ -11,10 +12,15 @@ const EditForm = () => {
 
   const phoneInputRef = useRef(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const input = document.querySelector('#phone');
     phoneInputRef.current = intlTelInput(input, {
+      autoPlaceholder: 'aggressive',
       preferredCountries: ['US', 'UY'],
+      utilsScript:
+        'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/js/utils.min.js',
     });
   }, []);
 
@@ -39,29 +45,30 @@ const EditForm = () => {
 
     const editFields = {
       photo,
+      phone,
       ...getInputValues({
         name,
         bio,
-        phone,
         email,
         password,
       }),
     };
 
-    const isPhoneInvalid = !phoneInputRef.current.isValidNumber();
+    const isPhoneInvalid =
+      phoneInputRef.current.value && !phoneInputRef.current.isValidNumber();
     if (isPhoneInvalid) {
       toast.error('Invalid phone number');
       return;
     }
 
-    if ((!email && password) || (email && !password)) {
-      toast.error('Email and password must be set together');
-      return;
-    }
-
     const user = await userService.editProfile(editFields);
-    userService.saveUserPhoto(user.photo);
-    userService.saveUserName(user.name);
+    if (user) {
+      userService.saveUserPhoto(user.photo);
+      userService.saveUserName(user.name);
+      const form = event.target;
+      form.reset();
+      navigate('/profile');
+    }
   };
 
   return (
@@ -103,17 +110,12 @@ const EditForm = () => {
       </div>
       <div className='profile-edit-form__item'>
         <label htmlFor='phone'>Phone</label>
-        <input
-          type='text'
-          placeholder='Enter your phone...'
-          name='phone'
-          id='phone'
-        />
+        <input type='text' name='phone' id='phone' />
       </div>
       <div className='profile-edit-form__item'>
         <label htmlFor='email'>Email</label>
         <input
-          type='text'
+          type='email'
           placeholder='Enter your email...'
           name='email'
           id='email'

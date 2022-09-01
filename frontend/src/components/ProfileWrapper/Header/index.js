@@ -44,7 +44,12 @@ export default function Header() {
           </li>
           <li></li>
           <li>
-            <a href='http://localhost:5000/api/v1/logout'>Logout</a>
+            <a
+              onClick={() => sessionStorage.clear()}
+              href='http://localhost:5000/api/v1/logout'
+            >
+              Logout
+            </a>
           </li>
         </ul>
       </div>

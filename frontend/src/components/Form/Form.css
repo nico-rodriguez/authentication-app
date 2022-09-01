@@ -38,6 +38,7 @@
   padding: 6px 0;
   width: 100%;
   margin-bottom: 32px;
+  cursor: pointer;
 }
 
 .alternatives__header {

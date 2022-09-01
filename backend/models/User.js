@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
+const PasswordValidator = require('password-validator');
 
 const UserSchema = new mongoose.Schema({
   githubId: {
@@ -15,7 +16,8 @@ const UserSchema = new mongoose.Schema({
   photo: {
     type: String,
     required: false,
-    default: '',
+    default:
+      'https://res.cloudinary.com/dnjnlemli/image/upload/v1662047796/profile-pictures/default.png',
   },
   name: {
     type: String,
@@ -34,6 +36,22 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+const passwordSchema = new PasswordValidator();
+passwordSchema
+  .is()
+  .min(8) // Minimum length 8
+  .is()
+  .max(40) // Maximum length 40
+  .has()
+  .uppercase() // Must have uppercase letters
+  .has()
+  .lowercase() // Must have lowercase letters
+  .has()
+  .digits(1) // Must have at least 1 digit
+  .has()
+  .not()
+  .spaces(); // Should not have spaces
+
 // Add a username, hash and salt fields.
 UserSchema.plugin(passportLocalMongoose, {
   // Complete list of options: https://github.com/saintedlama/passport-local-mongoose#main-options
@@ -50,6 +68,49 @@ UserSchema.plugin(passportLocalMongoose, {
   maxAttempts: 5,
   // Interval in milliseconds, which is for unlock user automatically after the interval is reached
   unlockInterval: 1000 * 60 * 5,
+  passwordValidator(password, cb) {
+    const passwordErrors = passwordSchema.validate(password, { list: true });
+    const passwordHasErrors = passwordErrors.length > 0;
+
+    if (passwordHasErrors) {
+      const [passwordError] = passwordErrors;
+
+      switch (passwordError) {
+        case 'min':
+          return cb({
+            name: 'ShortPassword',
+            message: 'Password must have at least 8 characters',
+          });
+        case 'max':
+          return cb({
+            name: 'LongPassword',
+            message: 'Password must have at most 40 characters',
+          });
+        case 'uppercase':
+          return cb({
+            name: 'PasswordMissingUppercase',
+            message: 'Password must have uppercase characters',
+          });
+        case 'lowercase':
+          return cb({
+            name: 'PasswordMissingLowercase',
+            message: 'Password must have lowercase characters',
+          });
+        case 'digits':
+          return cb({
+            name: 'PasswordMissingDigits',
+            message: 'Password must have digits',
+          });
+        case 'spaces':
+          return cb({
+            name: 'PasswordHasSpaces',
+            message: 'Password must not have spaces',
+          });
+      }
+    }
+
+    return cb();
+  },
 });
 
 module.exports = mongoose.model('User', UserSchema);

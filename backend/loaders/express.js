@@ -1,3 +1,7 @@
+const defaultErrorHandler = require('../middleware/defaultError');
+const mongooseErrorHandler = require('../middleware/mongooseErrors');
+const passwordErrorHandler = require('../middleware/passwordErrors');
+
 module.exports = function (session) {
   const express = require('express');
   require('express-async-errors');
@@ -49,6 +53,10 @@ module.exports = function (session) {
   app.use(`${basePath}/auth/google`, googleOAuthRouter);
 
   app.use(`${basePath}/profile`, profileRouter);
+
+  app.use(mongooseErrorHandler);
+  app.use(passwordErrorHandler);
+  app.use(defaultErrorHandler);
 
   // Start server
   app.listen(config.PORT, () =>

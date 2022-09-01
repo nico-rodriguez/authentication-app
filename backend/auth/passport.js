@@ -66,10 +66,7 @@ passport.use(
           const newUser = await new User({
             googleId: profile.id,
             // If the Google profile doesn't have the following properties,
-            // don't include them and instead use the model's defaults.
-            ...(profile.photos?.[0].value && {
-              photo: profile.photos?.[0].value,
-            }),
+            // don't include them and instead use the model's defaults
             ...(profile.displayName && {
               name: profile.displayName,
             }),
