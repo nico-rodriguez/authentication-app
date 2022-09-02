@@ -45,13 +45,17 @@ const editProfile = async (
         const progress = loaded / total;
 
         if (toastId.current === null) {
-          toastId.current = toast('Upload in progress', { progress });
+          toastId.current = toast('Upload in progress', {
+            progress,
+            pauseOnFocusLoss: false,
+          });
         } else {
           toast.update(toastId.current, { progress });
         }
       },
     });
     toast.done(toastId.current);
+    toast.dismiss(toastId.current);
     toastId.current = null;
     toast.success('Profile edited successfully');
     return newProfile;
