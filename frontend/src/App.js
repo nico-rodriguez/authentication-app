@@ -8,48 +8,39 @@ import Signup from 'pages/Signup';
 import Edit from 'pages/Profile/Edit';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
-import userService from 'services/user';
+import { UserContext, UserContextProvider } from 'context/user';
+import { useContext } from 'react';
 
 function App() {
-  const [userName, setUserName] = useState(null);
-  const [userPhoto, setUserPhoto] = useState(null);
-
-  const setUserData = (userName, userPhoto) => {
-    setUserName(userName);
-    setUserPhoto(userPhoto);
-    userService.saveUserName(userName);
-    userService.saveUserPhoto(userPhoto);
-  };
+  // const userContext = useContext(UserContext);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Navigate to='/signup' />} />
-        <Route path='/' element={<Wrapper />}>
-          <Route path='signup' element={<Signup />} />
-          <Route path='login' element={<Login />} />
-        </Route>
-        <Route
-          path='/profile'
-          element={<ProfileWrapper userName={userName} userPhoto={userPhoto} />}
-        >
-          <Route path='' element={<Profile setUserData={setUserData} />} />
-          <Route path='edit' element={<Edit setUserData={setUserData} />} />
-        </Route>
-      </Routes>
-      <ToastContainer
-        position='bottom-center'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </BrowserRouter>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Navigate to='/signup' />} />
+          <Route path='/' element={<Wrapper />}>
+            <Route path='signup' element={<Signup />} />
+            <Route path='login' element={<Login />} />
+          </Route>
+          <Route path='/profile' element={<ProfileWrapper />}>
+            <Route path='' element={<Profile />} />
+            <Route path='edit' element={<Edit />} />
+          </Route>
+        </Routes>
+        <ToastContainer
+          position='bottom-center'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </BrowserRouter>
+    </UserContextProvider>
   );
 }
 

@@ -3,19 +3,30 @@ import logoLightTheme from 'assets/images/devchallenges.svg';
 import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import { Link } from 'react-router-dom';
 import userService from 'services/user';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from 'context/user';
 
-export default function Header({ userName, userPhoto }) {
+export default function Header() {
   const logo = matchMedia('(prefers-color-scheme: dark)').matches
     ? logoDarkTheme
     : logoLightTheme;
 
-  // useEffect(() => {
-  //   userService.getProfile().then(({ name, photo }) => {
-  //     setUserName(name);
-  //     setUserPhoto(photo);
-  //   });
-  // }, []);
+  const { userName, userPhoto } = useContext(UserContext);
+
+  const [name, setName] = useState(userName);
+  const [photo, setPhoto] = useState(userPhoto);
+
+  useEffect(() => {
+    userService.getProfile().then(({ name, photo }) => {
+      setName(name);
+      setPhoto(photo);
+    });
+  }, []);
+
+  useEffect(() => {
+    setName(userName);
+    setPhoto(userPhoto);
+  }, [userName, userPhoto]);
 
   return (
     <header className='profile-header'>
@@ -26,13 +37,13 @@ export default function Header({ userName, userPhoto }) {
       />
       <div tabIndex={0} className='profile-header__user-info'>
         <img
-          src={userPhoto}
+          src={photo}
           width={32}
           height={32}
           alt=''
           className='profile-header__user-image'
         />
-        <p className='profile-header__user-name'>{userName}</p>
+        <p className='profile-header__user-name'>{name}</p>
         <ul className='profile-header__dropdown'>
           <li>
             <Link to='/profile'>My Profile</Link>

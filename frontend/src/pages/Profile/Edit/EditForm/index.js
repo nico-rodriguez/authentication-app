@@ -1,14 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import intlTelInput from 'intl-tel-input';
 import userService from 'services/user';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from 'context/user';
 
-const EditForm = ({ setUserData }) => {
+const EditForm = () => {
   const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
   const [showPassword, setShowPassword] = useState(false);
+
+  const userContext = useContext(UserContext);
 
   const phoneInputRef = useRef(null);
 
@@ -63,7 +66,8 @@ const EditForm = ({ setUserData }) => {
 
     const user = await userService.editProfile(editFields);
     if (user) {
-      setUserData(user.name, user.photo);
+      userContext.setUserName(user.name);
+      userContext.setUserPhoto(user.photo);
       const form = event.target;
       form.reset();
       navigate('/profile');

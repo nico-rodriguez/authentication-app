@@ -4,7 +4,7 @@ import userService from 'services/user';
 
 import './Profile.css';
 
-export default function Profile({ setUserData }) {
+export default function Profile() {
   const [user, setUser] = useState({
     photo: '',
     name: '...',
@@ -15,19 +15,13 @@ export default function Profile({ setUserData }) {
 
   useEffect(() => {
     userService.getProfile().then(({ photo, name, bio, phone, email }) => {
-      setUserData(name, photo);
-      setUser((user) => {
-        userService.saveUserName(name);
-        userService.saveUserPhoto(photo);
-
-        return {
-          photo: photo || user.photo,
-          name: name || user.name,
-          bio: bio || user.bio,
-          phone: phone || user.phone,
-          email: email || user.email,
-        };
-      });
+      setUser((user) => ({
+        photo: photo || user.photo,
+        name: name || user.name,
+        bio: bio || user.bio,
+        phone: phone || user.phone,
+        email: email || user.email,
+      }));
     });
   }, []);
 

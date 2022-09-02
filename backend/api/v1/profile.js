@@ -25,6 +25,15 @@ const upload = multer({
     // Max file size (1MB)
     fileSize: 1024 * 1024,
   },
+  fileFilter: function (req, file, cb) {
+    const validMimeTypes = ['image/jpeg', 'image/png'];
+    const isFileMimeTypeValid = validMimeTypes.includes(file.mimetype);
+    if (isFileMimeTypeValid) {
+      return cb(null, true);
+    }
+
+    cb(new Error('Invalid file type. Must be JPEG or PNG'));
+  },
 }).single('photo');
 
 router.get('/', isUserAuth, function (req, res) {
@@ -49,7 +58,7 @@ router.post('/edit', isUserAuth, upload, async function (req, res) {
 
   let updateFields = {};
   if (file) {
-    const photo = cloudinary.url(`${STORAGE_FOLDER_NAME}/${req.user._id}.png`, {
+    const photo = cloudinary.url(file.path, {
       width: 72,
       height: 72,
       crop: 'fill',
