@@ -13,7 +13,7 @@ export default function Header() {
   const { userName, userPhoto, setIsLoggedIn } = useContext(UserContext);
 
   const handleLogout = () => {
-    sessionStorage.clear();
+    window.sessionStorage.clear();
     setIsLoggedIn(false);
   };
 

@@ -3,6 +3,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const PasswordValidator = require('password-validator');
 
 const UserSchema = new mongoose.Schema({
+  email: {
+    type: String,
+  },
   githubId: {
     type: String,
     required: false,
