@@ -5,6 +5,8 @@ import userService from 'services/user';
 
 import logoLightTheme from 'assets/images/devchallenges.svg';
 import logoDarkTheme from 'assets/images/devchallenges-light.svg';
+import { useContext } from 'react';
+import { UserContext } from 'context/user';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,10 +14,13 @@ export default function Login() {
     ? logoDarkTheme
     : logoLightTheme;
 
+  const { setIsLoggedIn } = useContext(UserContext);
+
   const handleFormData = async (email, password) => {
     const successfulLogin = await userService.login(email, password);
     if (successfulLogin) {
       navigate('/profile');
+      setIsLoggedIn(true);
     }
   };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Form } from 'components/Form';
@@ -6,6 +6,7 @@ import { Form } from 'components/Form';
 import logoLightTheme from 'assets/images/devchallenges.svg';
 import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import userService from 'services/user';
+import { UserContext } from 'context/user';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -13,10 +14,13 @@ export default function Signup() {
     ? logoDarkTheme
     : logoLightTheme;
 
+  const { setIsLoggedIn } = useContext(UserContext);
+
   const handleFormData = async (email, password) => {
     const successfulSignup = await userService.signup(email, password);
     if (successfulSignup) {
       navigate('/profile');
+      setIsLoggedIn(true);
     }
   };
 

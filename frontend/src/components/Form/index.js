@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import githubLogo from './Github.svg';
 import googleLogo from './Google.svg';
 
 import './Form.css';
+import { UserContext } from 'context/user';
 
 export function Form({ buttonText, handleFormData }) {
+  const { setIsLoggedIn } = useContext(UserContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -13,6 +16,10 @@ export function Form({ buttonText, handleFormData }) {
     const password = event.target.password.value;
 
     await handleFormData(email, password);
+  };
+
+  const handleOAuth = () => {
+    setIsLoggedIn(true);
   };
 
   return (
@@ -37,10 +44,16 @@ export function Form({ buttonText, handleFormData }) {
           or continue with these social profile
         </div>
         <div className='alternatives__items'>
-          <a href='http://localhost:5000/api/v1/auth/google'>
+          <a
+            onClick={handleOAuth}
+            href='http://localhost:5000/api/v1/auth/google'
+          >
             <img src={googleLogo} alt='Google logo' />
           </a>
-          <a href='http://localhost:5000/api/v1/auth/github'>
+          <a
+            onClick={handleOAuth}
+            href='http://localhost:5000/api/v1/auth/github'
+          >
             <img src={githubLogo} alt='Github logo' />
           </a>
         </div>

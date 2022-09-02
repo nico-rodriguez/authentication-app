@@ -24,7 +24,10 @@ const getProfile = async () => {
   } catch (error) {}
 };
 
-const editProfile = async ({ photo, name, bio, phone, email, password }) => {
+const editProfile = async (
+  { photo, name, bio, phone, email, password },
+  toastId
+) => {
   const editData = new FormData();
   photo && editData.append('photo', photo, photo.name);
   editData.append('name', name);
@@ -38,7 +41,18 @@ const editProfile = async ({ photo, name, bio, phone, email, password }) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
+      onUploadProgress: ({ loaded, total }) => {
+        const progress = loaded / total;
+
+        if (toastId.current === null) {
+          toastId.current = toast('Upload in progress', { progress });
+        } else {
+          toast.update(toastId.current, { progress });
+        }
+      },
     });
+    toast.done(toastId.current);
+    toastId.current = null;
     toast.success('Profile edited successfully');
     return newProfile;
   } catch (error) {}

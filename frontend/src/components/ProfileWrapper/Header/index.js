@@ -2,8 +2,7 @@ import './Header.css';
 import logoLightTheme from 'assets/images/devchallenges.svg';
 import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import { Link } from 'react-router-dom';
-import userService from 'services/user';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { UserContext } from 'context/user';
 
 export default function Header() {
@@ -11,22 +10,12 @@ export default function Header() {
     ? logoDarkTheme
     : logoLightTheme;
 
-  const { userName, userPhoto } = useContext(UserContext);
+  const { userName, userPhoto, setIsLoggedIn } = useContext(UserContext);
 
-  const [name, setName] = useState(userName);
-  const [photo, setPhoto] = useState(userPhoto);
-
-  useEffect(() => {
-    userService.getProfile().then(({ name, photo }) => {
-      setName(name);
-      setPhoto(photo);
-    });
-  }, []);
-
-  useEffect(() => {
-    setName(userName);
-    setPhoto(userPhoto);
-  }, [userName, userPhoto]);
+  const handleLogout = () => {
+    sessionStorage.clear();
+    setIsLoggedIn(false);
+  };
 
   return (
     <header className='profile-header'>
@@ -37,13 +26,13 @@ export default function Header() {
       />
       <div tabIndex={0} className='profile-header__user-info'>
         <img
-          src={photo}
+          src={userPhoto}
           width={32}
           height={32}
           alt=''
           className='profile-header__user-image'
         />
-        <p className='profile-header__user-name'>{name}</p>
+        <p className='profile-header__user-name'>{userName}</p>
         <ul className='profile-header__dropdown'>
           <li>
             <Link to='/profile'>My Profile</Link>
@@ -54,7 +43,7 @@ export default function Header() {
           <li></li>
           <li>
             <a
-              onClick={() => sessionStorage.clear()}
+              onClick={handleLogout}
               href='http://localhost:5000/api/v1/logout'
             >
               Logout

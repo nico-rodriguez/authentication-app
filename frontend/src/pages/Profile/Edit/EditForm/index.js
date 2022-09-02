@@ -6,12 +6,14 @@ import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from 'context/user';
+import { ToastContext } from 'context/toast';
 
 const EditForm = () => {
-  const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
-  const [showPassword, setShowPassword] = useState(false);
-
   const userContext = useContext(UserContext);
+  const { toastId } = useContext(ToastContext);
+
+  const [userPhoto, setUserPhoto] = useState(() => userContext.userPhoto);
+  const [showPassword, setShowPassword] = useState(false);
 
   const phoneInputRef = useRef(null);
 
@@ -64,7 +66,7 @@ const EditForm = () => {
       return;
     }
 
-    const user = await userService.editProfile(editFields);
+    const user = await userService.editProfile(editFields, toastId);
     if (user) {
       userContext.setUserName(user.name);
       userContext.setUserPhoto(user.photo);

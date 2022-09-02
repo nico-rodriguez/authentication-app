@@ -8,14 +8,11 @@ import Signup from 'pages/Signup';
 import Edit from 'pages/Profile/Edit';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UserContext, UserContextProvider } from 'context/user';
-import { useContext } from 'react';
+import { ToastContextProvider } from 'context/toast';
 
 function App() {
-  // const userContext = useContext(UserContext);
-
   return (
-    <UserContextProvider>
+    <ToastContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Navigate to='/signup' />} />
@@ -40,7 +37,7 @@ function App() {
           pauseOnHover
         />
       </BrowserRouter>
-    </UserContextProvider>
+    </ToastContextProvider>
   );
 }
 
