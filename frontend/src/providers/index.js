@@ -1,10 +1,12 @@
+import Loader from 'components/Loader';
+import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ToastProvider } from './toast';
 import { UserProvider } from './user';
 
 export const AppProvider = ({ children }) => (
-  <>
+  <Suspense fallback={<Loader />}>
     <ToastProvider>
       <UserProvider>
         <BrowserRouter>{children}</BrowserRouter>
@@ -21,5 +23,5 @@ export const AppProvider = ({ children }) => (
       draggable
       pauseOnHover
     />
-  </>
+  </Suspense>
 );

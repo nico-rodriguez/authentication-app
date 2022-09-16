@@ -1,0 +1,14 @@
+.loader-wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .loader-wrapper {
+    background-color: #333333;
+  }
+}

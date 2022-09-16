@@ -1,7 +1,9 @@
 import Wrapper from 'components/Wrapper';
-import Login from 'pages/Login';
-import Signup from 'pages/Signup';
+import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
+
+const Login = lazy(() => import('pages/Login'));
+const Signup = lazy(() => import('pages/Signup'));
 
 const publicRoutes = [
   {

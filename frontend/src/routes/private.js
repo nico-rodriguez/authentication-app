@@ -1,8 +1,10 @@
 import { Navigate } from 'react-router-dom';
 
 import ProfileWrapper from 'components/ProfileWrapper';
-import Profile from 'pages/Profile';
-import Edit from 'pages/Profile/Edit';
+import { lazy } from 'react';
+
+const Profile = lazy(() => import('pages/Profile'));
+const Edit = lazy(() => import('pages/Profile/Edit'));
 
 const privateRoutes = [
   {
