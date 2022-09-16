@@ -39,7 +39,7 @@ export default function Profile() {
           navigate('/');
         });
     }
-  }, [loadingProfile, navigate]);
+  }, [loadingProfile, navigate, setIsLoggedIn]);
 
   if (loadingProfile) {
     return <Loader />;
