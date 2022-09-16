@@ -3,16 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Form } from 'components/Form';
 
-import logoLightTheme from 'assets/images/devchallenges.svg';
-import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import userApi from 'api/users';
 import { UserContext } from 'context/user';
+import { useLogo } from 'hooks';
 
 export default function Signup() {
   const navigate = useNavigate();
-  const logo = matchMedia('(prefers-color-scheme: dark)').matches
-    ? logoDarkTheme
-    : logoLightTheme;
+  const logo = useLogo();
 
   const { setIsLoggedIn } = useContext(UserContext);
 

@@ -1,15 +1,12 @@
 import './Header.css';
-import logoLightTheme from 'assets/images/devchallenges.svg';
-import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from 'context/user';
 import storage from 'utils/storage';
+import { useLogo } from 'hooks';
 
 export default function Header() {
-  const logo = matchMedia('(prefers-color-scheme: dark)').matches
-    ? logoDarkTheme
-    : logoLightTheme;
+  const logo = useLogo();
 
   const { userName, userPhoto, setIsLoggedIn } = useContext(UserContext);
 
