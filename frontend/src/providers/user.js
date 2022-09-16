@@ -1,27 +1,25 @@
 import { useEffect, useState } from 'react';
-import userService from 'services/user';
+import userApi from 'api/users';
 import storage from 'utils/storage';
-import constants from 'constants/index.js';
 import { UserContext } from 'context/user';
+import userStorage from 'storage/users';
 
 export const UserProvider = ({ children }) => {
-  const [userName, setUserName] = useState(() => userService.getUserName());
-  const [userPhoto, setUserPhoto] = useState(() => userService.getUserPhoto());
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    storage.getToken(constants.LOGGED_IN_STORAGE_KEY) ?? false
-  );
+  const [userName, setUserName] = useState(() => userStorage.getUserName());
+  const [userPhoto, setUserPhoto] = useState(() => userStorage.getUserPhoto());
+  const [isLoggedIn, setIsLoggedIn] = useState(() => userStorage.isLoggedIn());
 
   useEffect(() => {
     if (isLoggedIn) {
-      storage.setToken(constants.LOGGED_IN_STORAGE_KEY, true);
-      userService.getProfile().then(({ name, photo }) => {
+      userStorage.logIn();
+      userApi.getProfile().then(({ name, photo }) => {
         setUserName(name);
         setUserPhoto(photo);
       });
     } else {
       storage.clear();
     }
-    setIsLoggedIn(storage.getToken(constants.LOGGED_IN_STORAGE_KEY) ?? false);
+    setIsLoggedIn(userStorage.isLoggedIn());
   }, [isLoggedIn]);
 
   const value = {
@@ -29,12 +27,12 @@ export const UserProvider = ({ children }) => {
     setIsLoggedIn,
     userName,
     setUserName(name) {
-      userService.saveUserName(name);
+      userApi.saveUserName(name);
       setUserName(name);
     },
     userPhoto,
     setUserPhoto(photo) {
-      userService.saveUserPhoto(photo);
+      userApi.saveUserPhoto(photo);
       setUserPhoto(photo);
     },
   };

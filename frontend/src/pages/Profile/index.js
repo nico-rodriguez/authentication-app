@@ -2,7 +2,7 @@ import Loader from 'components/Loader';
 import { UserContext } from 'context/user';
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import userService from 'services/user';
+import userApi from 'api/users';
 
 import './Profile.css';
 
@@ -22,7 +22,7 @@ export default function Profile() {
 
   useEffect(() => {
     if (loadingProfile) {
-      userService
+      userApi
         .getProfile()
         .then(({ photo, name, bio, phone, email }) => {
           setUser((user) => ({

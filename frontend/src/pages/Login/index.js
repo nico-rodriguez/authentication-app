@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Form } from 'components/Form';
-import userService from 'services/user';
+import userApi from 'api/users';
 
 import logoLightTheme from 'assets/images/devchallenges.svg';
 import logoDarkTheme from 'assets/images/devchallenges-light.svg';
@@ -17,7 +17,7 @@ export default function Login() {
   const { setIsLoggedIn } = useContext(UserContext);
 
   const handleFormData = async (email, password) => {
-    const successfulLogin = await userService.login(email, password);
+    const successfulLogin = await userApi.login(email, password);
     if (successfulLogin) {
       navigate('/profile');
       setIsLoggedIn(true);

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import intlTelInput from 'intl-tel-input';
-import userService from 'services/user';
+import userApi from 'api/users';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './EditForm.css';
 import { toast } from 'react-toastify';
@@ -66,7 +66,7 @@ const EditForm = () => {
       return;
     }
 
-    const user = await userService.editProfile(editFields, toastId);
+    const user = await userApi.editProfile(editFields, toastId);
     if (user) {
       userContext.setUserName(user.name);
       userContext.setUserPhoto(user.photo);

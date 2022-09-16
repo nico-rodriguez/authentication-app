@@ -1,7 +1,6 @@
 import constants from 'constants/index.js';
 import axios from 'lib/axios';
 import { toast } from 'react-toastify';
-import storage from 'utils/storage';
 
 const signup = async (email, password) => {
   try {
@@ -64,32 +63,16 @@ const editProfile = async (
   } catch (error) {}
 };
 
-const saveUserPhoto = (photoURL) => {
-  storage.setToken(constants.USER_PHOTO_STORAGE_KEY, photoURL);
-};
-
-const getUserPhoto = () => storage.getToken(constants.USER_PHOTO_STORAGE_KEY);
-
-const saveUserName = (name) => {
-  storage.setToken(constants.USER_NAME_STORAGE_KEY, name);
-};
-
-const getUserName = () => storage.getToken(constants.USER_NAME_STORAGE_KEY);
-
 const logout = async () => {
   await axios.get('logout');
 };
 
-const userService = {
+const userApi = {
   signup,
   login,
   getProfile,
   editProfile,
-  saveUserPhoto,
-  getUserPhoto,
-  saveUserName,
-  getUserName,
   logout,
 };
 
-export default userService;
+export default userApi;
