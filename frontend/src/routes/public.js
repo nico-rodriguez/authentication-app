@@ -1,7 +1,7 @@
-const { default: Wrapper } = require('components/Wrapper');
-const { default: Login } = require('pages/Login');
-const { default: Signup } = require('pages/Signup');
-const { Navigate } = require('react-router-dom');
+import Wrapper from 'components/Wrapper';
+import Login from 'pages/Login';
+import Signup from 'pages/Signup';
+import { Navigate } from 'react-router-dom';
 
 const publicRoutes = [
   {

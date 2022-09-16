@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import privateRoutes from './private';
 import publicRoutes from './public';
 
-const { useRoutes } = require('react-router-dom');
+import { useRoutes } from 'react-router-dom';
 
 export const AppRoutes = () => {
   const { isLoggedIn } = useContext(UserContext);

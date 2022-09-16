@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
 
-const { default: ProfileWrapper } = require('components/ProfileWrapper');
-const { default: Profile } = require('pages/Profile');
-const { default: Edit } = require('pages/Profile/Edit');
+import ProfileWrapper from 'components/ProfileWrapper';
+import Profile from 'pages/Profile';
+import Edit from 'pages/Profile/Edit';
 
 const privateRoutes = [
   {
