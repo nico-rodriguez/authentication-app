@@ -1,0 +1,18 @@
+.error-fallback {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  color: #4f4f4f;
+  background-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error-fallback {
+    color: #e0e0e0;
+    background-color: #333333;
+  }
+}
