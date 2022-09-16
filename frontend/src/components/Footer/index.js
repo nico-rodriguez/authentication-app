@@ -7,12 +7,15 @@ export function Footer() {
     <footer className='footer'>
       <div className='footer__item'>
         created by{' '}
-        <a className='footer__link' href='#'>
+        <a
+          className='footer__link'
+          href='https://github.com/nico-rodriguez/authentication-app'
+        >
           nico-rodriguez
         </a>
       </div>
       <div className='footer__item'>
-        <a className='footer__link' href='#'>
+        <a className='footer__link' href='https://devchallenges.io/'>
           devChallenges.io
         </a>
       </div>
