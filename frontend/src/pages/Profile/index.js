@@ -1,6 +1,7 @@
+import Loader from 'components/Loader';
 import { UserContext } from 'context/user';
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import userService from 'services/user';
 
 import './Profile.css';
@@ -13,22 +14,36 @@ export default function Profile() {
     phone: '...',
     email: '...',
   });
+  const [loadingProfile, setLoadingProfile] = useState(true);
 
-  const { isLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      userService.getProfile().then(({ photo, name, bio, phone, email }) => {
-        setUser((user) => ({
-          photo: photo || user.photo,
-          name: name || user.name,
-          bio: bio || user.bio,
-          phone: phone || user.phone,
-          email: email || user.email,
-        }));
-      });
+    if (loadingProfile) {
+      userService
+        .getProfile()
+        .then(({ photo, name, bio, phone, email }) => {
+          setUser((user) => ({
+            photo: photo || user.photo,
+            name: name || user.name,
+            bio: bio || user.bio,
+            phone: phone || user.phone,
+            email: email || user.email,
+          }));
+          setLoadingProfile(false);
+        })
+        .catch(() => {
+          setIsLoggedIn(false);
+          navigate('/');
+        });
     }
-  }, [isLoggedIn]);
+  }, [loadingProfile, navigate]);
+
+  if (loadingProfile) {
+    return <Loader />;
+  }
 
   return (
     <div className='profile'>
