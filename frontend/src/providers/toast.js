@@ -1,6 +1,6 @@
 import { ToastContext } from 'context/toast';
 import { useRef } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 export const ToastProvider = ({ children }) => {
   const toastId = useRef(null);
@@ -31,6 +31,19 @@ export const ToastProvider = ({ children }) => {
   };
 
   return (
-    <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
+    <>
+      <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
+      <ToastContainer
+        position='bottom-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 };
