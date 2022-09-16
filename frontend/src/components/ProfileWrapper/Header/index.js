@@ -4,6 +4,7 @@ import logoDarkTheme from 'assets/images/devchallenges-light.svg';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from 'context/user';
+import storage from 'utils/storage';
 
 export default function Header() {
   const logo = matchMedia('(prefers-color-scheme: dark)').matches
@@ -13,7 +14,7 @@ export default function Header() {
   const { userName, userPhoto, setIsLoggedIn } = useContext(UserContext);
 
   const handleLogout = () => {
-    window.sessionStorage.clear();
+    storage.clear();
     setIsLoggedIn(false);
   };
 

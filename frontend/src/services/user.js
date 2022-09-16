@@ -1,5 +1,7 @@
+import constants from 'constants/index.js';
 import axios from 'lib/axios';
 import { toast } from 'react-toastify';
+import storage from 'utils/storage';
 
 const signup = async (email, password) => {
   try {
@@ -63,16 +65,16 @@ const editProfile = async (
 };
 
 const saveUserPhoto = (photoURL) => {
-  sessionStorage.setItem('user-photo', photoURL);
+  storage.setToken(constants.USER_PHOTO_STORAGE_KEY, photoURL);
 };
 
-const getUserPhoto = () => sessionStorage.getItem('user-photo');
+const getUserPhoto = () => storage.getToken(constants.USER_PHOTO_STORAGE_KEY);
 
 const saveUserName = (name) => {
-  sessionStorage.setItem('user-name', name);
+  storage.setToken(constants.USER_NAME_STORAGE_KEY, name);
 };
 
-const getUserName = () => sessionStorage.getItem('user-name');
+const getUserName = () => storage.getToken(constants.USER_NAME_STORAGE_KEY);
 
 const logout = async () => {
   await axios.get('logout');
