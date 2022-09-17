@@ -11,7 +11,15 @@ const redisClient = new Redis({
   port: config.REDIS_PORT,
 });
 
-console.log('Connected to session database!');
+redisClient.on('error', (err) => {
+  console.error('Redis client error');
+  console.error(err);
+  process.exit(1);
+});
+
+redisClient.on('connect', () => {
+  console.log('Connected to session database!');
+});
 
 const sessionStore = new RedisStore({
   client: redisClient,
