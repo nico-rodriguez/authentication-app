@@ -16,6 +16,7 @@ redisClient
   })
   .catch((err) => {
     console.error('Could not connect to session database.');
+    console.error(`Redis URL: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
     console.error(err);
     process.exit(1);
   });
