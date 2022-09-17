@@ -7,13 +7,14 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from 'context/user';
 import { ToastContext } from 'context/toast';
+import { useToggle } from 'hooks';
 
 const EditForm = () => {
   const userContext = useContext(UserContext);
   const { toastId } = useContext(ToastContext);
 
   const [userPhoto, setUserPhoto] = useState(() => userContext.userPhoto);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, toggleShowPassword] = useToggle(false);
 
   const phoneInputRef = useRef(null);
 
@@ -28,10 +29,6 @@ const EditForm = () => {
         'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/js/utils.min.js',
     });
   }, []);
-
-  const toggleShowPassword = () => {
-    setShowPassword((showPassword) => !showPassword);
-  };
 
   const getInputValues = (objInputs) =>
     Object.entries(objInputs).reduce(
