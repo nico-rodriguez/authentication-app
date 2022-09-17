@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import constants from 'constants/index';
 
 const axiosInstance = axios.create({
-  baseURL: '/api/v1/',
+  baseURL: `${constants.BACKEND_URL}/api/v1/`,
   withCredentials: true,
 });
 
