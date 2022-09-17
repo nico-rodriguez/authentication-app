@@ -1,4 +1,3 @@
-import constants from 'constants/index.js';
 import axios from 'lib/axios';
 import { toast } from 'react-toastify';
 
