@@ -28,6 +28,10 @@ module.exports = function (session) {
     app.use(pino);
   }
 
+  if (config.NODE_ENV === 'production') {
+    app.set('trust proxy', true);
+  }
+
   app.use(
     cors({
       origin: config.FRONTEND_URL, // allow to server to accept request from different origin
