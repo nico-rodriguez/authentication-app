@@ -7,7 +7,6 @@ const RedisStore = require('connect-redis')(session);
 const { createClient } = require('redis');
 const redisClient = createClient({
   url: `${config.REDIS_HOST}:${config.REDIS_PORT}`,
-  legacyMode: true,
 });
 redisClient
   .connect()
