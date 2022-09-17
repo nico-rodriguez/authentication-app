@@ -4,7 +4,7 @@ const USER_NAME_STORAGE_KEY = 'user_name';
 
 const BACKEND_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://authentication-backend.onrender.com/'
+    ? 'https://authentication-backend.onrender.com'
     : 'http://localhost:5000';
 
 const constants = {
