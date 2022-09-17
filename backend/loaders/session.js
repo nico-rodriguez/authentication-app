@@ -4,25 +4,17 @@ const config = require('../config');
 // Configuration of the store for the session of express-session
 // Redis configuration and connection (only in development)
 const RedisStore = require('connect-redis')(session);
-const { createClient } = require('redis');
-const redisClient = createClient({
-  url: `${config.REDIS_HOST}:${config.REDIS_PORT}`,
-});
-redisClient
-  .connect()
-  .then(() => {
-    console.log('Connected to session database!');
-  })
-  .catch((err) => {
-    console.error('Could not connect to session database.');
-    console.error(`Redis URL: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
-    console.error(err);
-    process.exit(1);
-  });
-const sessionStore = new RedisStore({
-  client: redisClient,
+const Redis = require('ioredis');
+
+const redisClient = new Redis({
   host: config.REDIS_HOST,
   port: config.REDIS_PORT,
+});
+
+console.log('Connected to session database!');
+
+const sessionStore = new RedisStore({
+  client: redisClient,
 });
 
 module.exports = session({
