@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { UserContext } from 'context/user';
 import storage from 'utils/storage';
 import { useLogo } from 'hooks';
+import constants from 'constants/index';
 
 export default function Header() {
   const logo = useLogo();
@@ -42,7 +43,7 @@ export default function Header() {
           <li>
             <a
               onClick={handleLogout}
-              href='http://localhost:5000/api/v1/logout'
+              href={`${constants.BACKEND_URL}/api/v1/logout`}
             >
               Logout
             </a>

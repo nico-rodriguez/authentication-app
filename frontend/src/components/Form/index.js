@@ -6,6 +6,8 @@ import googleLogo from './Google.svg';
 import './Form.css';
 import { UserContext } from 'context/user';
 
+import constants from 'constants/index';
+
 export function Form({ buttonText, handleFormData }) {
   const { setIsLoggedIn } = useContext(UserContext);
 
@@ -46,13 +48,13 @@ export function Form({ buttonText, handleFormData }) {
         <div className='alternatives__items'>
           <a
             onClick={handleOAuth}
-            href='http://localhost:5000/api/v1/auth/google'
+            href={`${constants.BACKEND_URL}/api/v1/auth/google`}
           >
             <img src={googleLogo} alt='Google logo' />
           </a>
           <a
             onClick={handleOAuth}
-            href='http://localhost:5000/api/v1/auth/github'
+            href={`${constants.BACKEND_URL}/api/v1/auth/github`}
           >
             <img src={githubLogo} alt='Github logo' />
           </a>

@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
+const config = require('../../config');
 
 const router = Router();
 
@@ -15,8 +16,8 @@ router.get(
 router.get(
   '/callback',
   passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/profile',
-    failureRedirect: 'http://localhost:3000',
+    successRedirect: `${config.FRONTEND_URL}/profile`,
+    failureRedirect: config.FRONTEND_URL,
   })
 );
 
