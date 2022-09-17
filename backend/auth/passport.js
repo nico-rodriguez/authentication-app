@@ -14,8 +14,7 @@ passport.use(
     {
       clientID: config.GITHUB_CLIENT_ID,
       clientSecret: config.GITHUB_CLIENT_SECRET,
-      callbackURL:
-        'https://authentication-backend.onrender.com/api/v1/auth/github/callback',
+      callbackURL: '/api/v1/auth/github/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
