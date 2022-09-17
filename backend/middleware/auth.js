@@ -1,6 +1,8 @@
+const config = require('../config');
+
 function isUserAuth(err, req, res, next) {
   if (!req.user) {
-    res.sendStatus(401);
+    res.redirect(401, `${config.FRONTEND_URL}/login`);
   }
 
   next();
