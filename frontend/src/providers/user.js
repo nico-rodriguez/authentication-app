@@ -27,12 +27,12 @@ export const UserProvider = ({ children }) => {
     setIsLoggedIn,
     userName,
     setUserName(name) {
-      userApi.saveUserName(name);
+      userStorage.setUserName(name);
       setUserName(name);
     },
     userPhoto,
     setUserPhoto(photo) {
-      userApi.saveUserPhoto(photo);
+      userStorage.setUserPhoto(photo);
       setUserPhoto(photo);
     },
   };

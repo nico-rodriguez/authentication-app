@@ -48,6 +48,7 @@ const editProfile = async (
           toastId.current = toast('Upload in progress', {
             progress,
             pauseOnFocusLoss: false,
+            pauseOnHover: false,
           });
         } else {
           toast.update(toastId.current, { progress });
@@ -62,16 +63,11 @@ const editProfile = async (
   } catch (error) {}
 };
 
-const logout = async () => {
-  await axios.get('logout');
-};
-
 const userApi = {
   signup,
   login,
   getProfile,
   editProfile,
-  logout,
 };
 
 export default userApi;
