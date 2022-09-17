@@ -27,15 +27,17 @@ module.exports = function (session) {
     const pino = require('pino-http')();
     app.use(pino);
   }
-  if (config.NODE_ENV === 'development') {
-    app.use(
-      cors({
-        origin: 'http://localhost:3000', // allow to server to accept request from different origin
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true, // allow session cookie from browser to pass through
-      })
-    );
-  }
+
+  app.use(
+    cors({
+      origin:
+        config.NODE_ENV === 'development'
+          ? 'http://localhost:3000'
+          : config.FRONTEND_URL, // allow to server to accept request from different origin
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true, // allow session cookie from browser to pass through
+    })
+  );
   app.use(helmet());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
