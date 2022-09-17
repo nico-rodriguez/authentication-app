@@ -5,7 +5,10 @@ const config = require('../config');
 // Redis configuration and connection (only in development)
 const RedisStore = require('connect-redis')(session);
 const { createClient } = require('redis');
-const redisClient = createClient({ legacyMode: true });
+const redisClient = createClient({
+  url: `${config.REDIS_HOST}:${config.REDIS_PORT}`,
+  legacyMode: true,
+});
 redisClient
   .connect()
   .then(() => {
