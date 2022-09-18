@@ -9,19 +9,6 @@ export const UserProvider = ({ children }) => {
   const [userPhoto, setUserPhoto] = useState(() => userStorage.getUserPhoto());
   const [isLoggedIn, setIsLoggedIn] = useState(() => userStorage.isLoggedIn());
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      userStorage.logIn();
-      userApi.getProfile().then(({ name, photo }) => {
-        setUserName(name);
-        setUserPhoto(photo);
-      });
-    } else {
-      storage.clear();
-    }
-    setIsLoggedIn(userStorage.isLoggedIn());
-  }, [isLoggedIn]);
-
   const value = {
     isLoggedIn,
     setIsLoggedIn,
