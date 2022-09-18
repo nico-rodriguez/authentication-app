@@ -50,13 +50,13 @@ export function Form({ buttonText, handleFormData }) {
             onClick={handleOAuth}
             href={`${constants.BACKEND_URL}/api/v1/auth/google`}
           >
-            <img src={googleLogo} alt='Google logo' />
+            <img width='43' height='43' src={googleLogo} alt='Google logo' />
           </a>
           <a
             onClick={handleOAuth}
             href={`${constants.BACKEND_URL}/api/v1/auth/github`}
           >
-            <img src={githubLogo} alt='Github logo' />
+            <img width='43' height='43' src={githubLogo} alt='Github logo' />
           </a>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <main className='main'>
       <h1 className='main__header-1'>
-        <img src={logo} alt='Authentication app logo' />
+        <img width='132' height='19' src={logo} alt='Authentication app logo' />
       </h1>
       <h2 className='main__header-2'>Login</h2>
       <Form buttonText='Login' handleFormData={handleFormData} />

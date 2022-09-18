@@ -18,6 +18,8 @@ export default function Header() {
   return (
     <header className='profile-header'>
       <img
+        width='132'
+        height='19'
         src={logo}
         alt='devchallenges logo'
         className='profile-header__logo'

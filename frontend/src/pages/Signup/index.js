@@ -24,7 +24,7 @@ export default function Signup() {
   return (
     <main className='main'>
       <h1 className='main__header-1'>
-        <img src={logo} alt='Authentication app logo' />
+        <img width='132' height='19' src={logo} alt='Authentication app logo' />
       </h1>
       <h2 className='main__header-2'>
         Join thousands of learners from around the world{' '}
