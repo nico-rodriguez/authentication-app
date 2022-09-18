@@ -38,7 +38,8 @@ const upload = multer({
 
 router.get('/', isUserAuth, function (req, res) {
   const { user } = req;
-  res.json(user);
+
+  return res.json(user);
 });
 
 router.post('/edit', isUserAuth, upload, async function (req, res) {
@@ -76,7 +77,7 @@ router.post('/edit', isUserAuth, upload, async function (req, res) {
     new: true,
   });
 
-  res.json(updatedUser);
+  return res.json(updatedUser);
 });
 
 module.exports = router;
