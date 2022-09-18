@@ -36,7 +36,7 @@ module.exports = session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24,
     httpOnly: true,
-    sameSite: 'none',
+    sameSite: config.NODE_ENV === 'production' ? 'none' : 'strict',
     secure: config.NODE_ENV === 'production',
   },
   store: sessionStore,
