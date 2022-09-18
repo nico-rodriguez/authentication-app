@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import userApi from 'api/users';
-import storage from 'utils/storage';
+import { useState } from 'react';
 import { UserContext } from 'context/user';
 import userStorage from 'storage/users';
 
