@@ -136,9 +136,9 @@ const EditForm = () => {
           onClick={toggleShowPassword}
         >
           {showPassword ? (
-            <span className='material-icons'>visibility</span>
+            <span className='profile-edit-form__show-password-button--hide' />
           ) : (
-            <span className='material-icons'>password</span>
+            <span className='profile-edit-form__show-password-button--show' />
           )}
         </button>
       </div>

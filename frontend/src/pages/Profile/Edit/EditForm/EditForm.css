@@ -92,15 +92,35 @@
 .profile-edit-form__show-password-button {
   border-radius: 12px;
   background: none;
-  margin-left: 5px;
+  margin-left: 10px;
+  padding: calc(8px + 1px);
   color: #828282;
   cursor: pointer;
+  line-height: 1.8rem;
+  position: relative;
 }
 
 @media (prefers-color-scheme: dark) {
   .profile-edit-form__show-password-button {
     color: #ffffff;
   }
+}
+
+.profile-edit-form__show-password-button--show,
+.profile-edit-form__show-password-button--hide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.profile-edit-form__show-password-button--show::after {
+  content: '\e8f4';
+}
+
+.profile-edit-form__show-password-button--hide::after {
+  content: '\e8f5';
 }
 
 .profile-edit-form__submit-button {
