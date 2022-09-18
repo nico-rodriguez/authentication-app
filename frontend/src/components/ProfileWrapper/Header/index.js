@@ -9,11 +9,10 @@ import constants from 'constants/index';
 export default function Header() {
   const logo = useLogo();
 
-  const { user, setIsLoggedIn } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleLogout = () => {
     storage.clear();
-    setIsLoggedIn(false);
   };
 
   return (
