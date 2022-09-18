@@ -1,6 +1,5 @@
 const LOGGED_IN_STORAGE_KEY = 'logged_in';
-const USER_PHOTO_STORAGE_KEY = 'user_photo';
-const USER_NAME_STORAGE_KEY = 'user_name';
+const USER_STORAGE_TOKEN = 'user';
 
 const BACKEND_URL =
   process.env.NODE_ENV === 'production'
@@ -9,8 +8,7 @@ const BACKEND_URL =
 
 const constants = {
   LOGGED_IN_STORAGE_KEY,
-  USER_NAME_STORAGE_KEY,
-  USER_PHOTO_STORAGE_KEY,
+  USER_STORAGE_TOKEN,
   BACKEND_URL,
 };
 

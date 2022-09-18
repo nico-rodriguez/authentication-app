@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import userApi from 'api/users';
 
 import './Profile.css';
-import userStorage from 'storage/users';
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -17,7 +16,7 @@ export default function Profile() {
   });
   const [loadingProfile, setLoadingProfile] = useState(true);
 
-  const { setIsLoggedIn, setUserName, setUserPhoto } = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -25,26 +24,24 @@ export default function Profile() {
     if (loadingProfile) {
       userApi
         .getProfile()
-        .then(({ photo, name, bio, phone, email }) => {
-          setUser((user) => ({
+        .then((user) => {
+          const { photo, name, bio, phone, email } = user;
+          setUser({
             photo: photo || user.photo,
             name: name || user.name,
             bio: bio || user.bio,
             phone: phone || user.phone,
             email: email || user.email,
-          }));
-          userStorage.setUserName(name);
-          userStorage.setUserPhoto(photo);
-          setUserName(name);
-          setUserPhoto(photo);
+          });
+          userContext.setUser(user);
           setLoadingProfile(false);
         })
         .catch(() => {
-          setIsLoggedIn(false);
+          userContext.setIsLoggedIn(false);
           navigate('/');
         });
     }
-  }, [loadingProfile, navigate, setIsLoggedIn, setUserName, setUserPhoto]);
+  }, [loadingProfile, navigate, userContext, user]);
 
   if (loadingProfile) {
     return <Loader />;

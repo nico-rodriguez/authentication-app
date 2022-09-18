@@ -9,7 +9,7 @@ import constants from 'constants/index';
 export default function Header() {
   const logo = useLogo();
 
-  const { userName, userPhoto, setIsLoggedIn } = useContext(UserContext);
+  const { user, setIsLoggedIn } = useContext(UserContext);
 
   const handleLogout = () => {
     storage.clear();
@@ -25,13 +25,13 @@ export default function Header() {
       />
       <div tabIndex={0} className='profile-header__user-info'>
         <img
-          src={userPhoto}
+          src={user.photo}
           width={32}
           height={32}
           alt=''
           className='profile-header__user-image'
         />
-        <p className='profile-header__user-name'>{userName}</p>
+        <p className='profile-header__user-name'>{user.name}</p>
         <ul className='profile-header__dropdown'>
           <li>
             <Link to='/profile'>My Profile</Link>

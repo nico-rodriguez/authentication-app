@@ -65,8 +65,7 @@ const EditForm = () => {
 
     const user = await userApi.editProfile(editFields, toastId);
     if (user) {
-      userContext.setUserName(user.name);
-      userContext.setUserPhoto(user.photo);
+      userContext.setUser(user);
       const form = event.target;
       form.reset();
       navigate('/profile');
