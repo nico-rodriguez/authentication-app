@@ -2,11 +2,16 @@ import { Navigate } from 'react-router-dom';
 
 import ProfileWrapper from 'components/ProfileWrapper';
 import { lazy } from 'react';
+import Welcome from 'pages/Welcome';
 
 const Profile = lazy(() => import('pages/Profile'));
 const Edit = lazy(() => import('pages/Profile/Edit'));
 
 const privateRoutes = [
+  {
+    path: '/welcome',
+    element: <Welcome />,
+  },
   {
     path: '/profile',
     element: <ProfileWrapper />,

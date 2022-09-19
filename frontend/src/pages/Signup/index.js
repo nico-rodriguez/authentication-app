@@ -15,9 +15,10 @@ export default function Signup() {
 
   const handleFormData = async (email, password) => {
     const successfulSignup = await userApi.signup(email, password);
+
     if (successfulSignup) {
-      navigate('/profile');
       setIsLoggedIn(true);
+      navigate('/welcome');
     }
   };
 

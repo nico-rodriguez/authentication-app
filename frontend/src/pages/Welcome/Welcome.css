@@ -1,0 +1,38 @@
+.welcome {
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.welcome__title,
+.welcome__subtitle {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+}
+
+.welcome__title {
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+}
+
+.welcome__subtitle {
+  font-size: 2.1rem;
+  line-height: 2.8rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .welcome {
+    background-color: #333333;
+  }
+
+  .welcome__title,
+  .welcome__subtitle {
+    color: #e0e0e0;
+  }
+}

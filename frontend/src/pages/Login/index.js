@@ -17,8 +17,8 @@ export default function Login() {
   const handleFormData = async (email, password) => {
     const successfulLogin = await userApi.login(email, password);
     if (successfulLogin) {
-      navigate('/profile');
       setIsLoggedIn(true);
+      navigate('/welcome');
     }
   };
 

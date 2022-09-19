@@ -3,16 +3,7 @@ import { UserContext } from 'context/user';
 import userStorage from 'storage/users';
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(
-    () =>
-      userStorage.getUser() || {
-        photo: '',
-        name: '...',
-        bio: '...',
-        phone: '...',
-        email: '...',
-      }
-  );
+  const [user, setUser] = useState(() => userStorage.getUser());
   const [isLoggedIn, setIsLoggedIn] = useState(() => userStorage.isLoggedIn());
 
   const value = useMemo(

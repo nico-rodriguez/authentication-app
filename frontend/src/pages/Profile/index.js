@@ -1,51 +1,11 @@
-import Loader from 'components/Loader';
 import { UserContext } from 'context/user';
-import { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import userApi from 'api/users';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import './Profile.css';
 
 export default function Profile() {
-  const [user, setUser] = useState({
-    photo: '',
-    name: '...',
-    bio: '...',
-    phone: '...',
-    email: '...',
-  });
-  const [loadingProfile, setLoadingProfile] = useState(true);
-
-  const userContext = useContext(UserContext);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (loadingProfile) {
-      userApi
-        .getProfile()
-        .then((user) => {
-          const { photo, name, bio, phone, email } = user;
-          setUser({
-            photo: photo || user.photo,
-            name: name || user.name,
-            bio: bio || user.bio,
-            phone: phone || user.phone,
-            email: email || user.email,
-          });
-          userContext.setUser(user);
-          setLoadingProfile(false);
-        })
-        .catch(() => {
-          userContext.setIsLoggedIn(false);
-          navigate('/');
-        });
-    }
-  }, [loadingProfile, navigate, userContext, user]);
-
-  if (loadingProfile) {
-    return <Loader />;
-  }
+  const { user } = useContext(UserContext);
 
   return (
     <div className='profile'>
