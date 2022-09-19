@@ -12,12 +12,12 @@ router.get(
   })
 );
 
-//Redirect to profile page after successful OAuth authentication with GitHub
+//Redirect to /authenticating page after successful OAuth authentication with GitHub
 router.get(
   '/callback',
   passport.authenticate('github', {
-    successRedirect: `${config.FRONTEND_URL}/welcome`,
-    failureRedirect: config.FRONTEND_URL,
+    successRedirect: `${config.FRONTEND_URL}/authenticating`,
+    failureRedirect: `${config.FRONTEND_URL}/authenticating`,
   })
 );
 

@@ -12,11 +12,19 @@ const isLoggedIn = () =>
 
 const logIn = () => storage.setToken(constants.LOGGED_IN_STORAGE_KEY, true);
 
+const isAuthenticating = () =>
+  storage.getToken(constants.AUTHENTICATING_STORAGE_KEY);
+
+const setAuthenticating = (isAuthenticating) =>
+  storage.setToken(constants.AUTHENTICATING_STORAGE_KEY, isAuthenticating);
+
 const userStorage = {
   setUser,
   getUser,
   isLoggedIn,
   logIn,
+  isAuthenticating,
+  setAuthenticating,
 };
 
 export default userStorage;

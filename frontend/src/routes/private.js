@@ -28,7 +28,7 @@ const privateRoutes = [
   },
   {
     path: '*',
-    element: <Navigate to='/profile' />,
+    element: <Navigate to='/welcome' />,
   },
 ];
 

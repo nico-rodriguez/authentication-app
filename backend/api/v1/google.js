@@ -12,12 +12,12 @@ router.get(
   })
 );
 
-//Redirect to profile page after successful OAuth authentication with Google
+//Redirect to /authenticating page after successful OAuth authentication with Google
 router.get(
   '/callback',
   passport.authenticate('google', {
-    successRedirect: `${config.FRONTEND_URL}/welcome`,
-    failureRedirect: config.FRONTEND_URL,
+    successRedirect: `${config.FRONTEND_URL}/authenticating`,
+    failureRedirect: `${config.FRONTEND_URL}/authenticating`,
   })
 );
 

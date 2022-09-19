@@ -5,6 +5,9 @@ import userStorage from 'storage/users';
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(() => userStorage.getUser());
   const [isLoggedIn, setIsLoggedIn] = useState(() => userStorage.isLoggedIn());
+  const [isAuthenticating, setAuthenticating] = useState(() =>
+    userStorage.isAuthenticating()
+  );
 
   const value = useMemo(
     () => ({
@@ -18,8 +21,13 @@ export const UserProvider = ({ children }) => {
         userStorage.setUser(user);
         setUser((contextUser) => Object.assign({ ...contextUser }, user));
       },
+      isAuthenticating,
+      setAuthenticating(isAuthenticating) {
+        userStorage.setAuthenticating(isAuthenticating);
+        setAuthenticating(isAuthenticating);
+      },
     }),
-    [isLoggedIn, user]
+    [isAuthenticating, isLoggedIn, user]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

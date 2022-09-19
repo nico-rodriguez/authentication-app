@@ -9,7 +9,7 @@ import { UserContext } from 'context/user';
 import constants from 'constants/index';
 
 export function Form({ buttonText, handleFormData }) {
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { setAuthenticating } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +21,7 @@ export function Form({ buttonText, handleFormData }) {
   };
 
   const handleOAuth = () => {
-    setIsLoggedIn(true);
+    setAuthenticating(true);
   };
 
   return (
