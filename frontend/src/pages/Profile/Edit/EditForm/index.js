@@ -10,10 +10,10 @@ import { ToastContext } from 'context/toast';
 import { useToggle } from 'hooks';
 
 const EditForm = () => {
-  const userContext = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { toastId } = useContext(ToastContext);
 
-  const [userPhoto, setUserPhoto] = useState(() => userContext.userPhoto);
+  const [userPhoto, setUserPhoto] = useState(() => user.photo);
   const [showPassword, toggleShowPassword] = useToggle(false);
 
   const phoneInputRef = useRef(null);
@@ -63,9 +63,9 @@ const EditForm = () => {
       return;
     }
 
-    const user = await userApi.editProfile(editFields, toastId);
-    if (user) {
-      userContext.setUser(user);
+    const userProfile = await userApi.editProfile(editFields, toastId);
+    if (userProfile) {
+      setUser(userProfile);
       const form = event.target;
       form.reset();
       navigate('/profile');
