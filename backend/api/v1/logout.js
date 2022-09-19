@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
   res
     .clearCookie('sessionId', {
       maxAge: 1000 * 60 * 60 * 24,
-      httpOnly: true,
       sameSite: config.NODE_ENV === 'production' ? 'none' : 'strict',
       secure: config.NODE_ENV === 'production',
     })

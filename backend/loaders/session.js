@@ -36,7 +36,6 @@ module.exports = session({
   // See `ttl` option of the `RedisStore`: https://www.npmjs.com/package/connect-redis.
   cookie: {
     maxAge: 1000 * 60 * 60 * 24,
-    httpOnly: true,
     sameSite: config.NODE_ENV === 'production' ? 'none' : 'strict',
     secure: config.NODE_ENV === 'production',
   },
