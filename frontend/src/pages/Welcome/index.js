@@ -17,7 +17,10 @@ const Welcome = () => {
     if (user) {
       setLoadingProfile(false);
       setIsLoggedIn(true);
-      return navigate('/profile');
+      setTimeout(() => {
+        navigate('/profile');
+      }, 3000);
+      return;
     }
 
     if (loadingProfile) {
@@ -37,7 +40,9 @@ const Welcome = () => {
           setLoadingProfile(false);
           setIsLoggedIn(true);
           setUser(user);
-          return navigate('/profile');
+          setTimeout(() => {
+            navigate('/profile');
+          }, 3000);
         })
         .catch(() => {
           setLoadingProfile(false);
