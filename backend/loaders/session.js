@@ -30,6 +30,7 @@ module.exports = session({
   secret: config.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  proxy: config.NODE_ENV === 'production',
   // Expires after 24h.
   // connect-redis prunes its entries by default according to this number.
   // See `ttl` option of the `RedisStore`: https://www.npmjs.com/package/connect-redis.
