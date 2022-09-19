@@ -10,6 +10,10 @@
   background-color: #ffffff;
 }
 
+.error-fallback a {
+  font-size: 2rem;
+}
+
 @media (prefers-color-scheme: dark) {
   .error-fallback {
     color: #e0e0e0;
