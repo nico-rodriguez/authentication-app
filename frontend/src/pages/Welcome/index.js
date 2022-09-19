@@ -16,8 +16,8 @@ const Welcome = () => {
   useEffect(() => {
     if (user) {
       setLoadingProfile(false);
-      setIsLoggedIn(true);
       setTimeout(() => {
+        setIsLoggedIn(true);
         navigate('/profile');
       }, 3000);
       return;
@@ -38,9 +38,9 @@ const Welcome = () => {
             { photo, name, bio, phone, email }
           );
           setLoadingProfile(false);
-          setIsLoggedIn(true);
-          setUser(user);
           setTimeout(() => {
+            setIsLoggedIn(true);
+            setUser(user);
             navigate('/profile');
           }, 3000);
         })
