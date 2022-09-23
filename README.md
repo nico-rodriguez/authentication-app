@@ -6,7 +6,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://authentication-app-473ad7.netlify.app">
       Solution
     </a>
     <span> | </span>
@@ -22,50 +22,76 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 It features:
 
+- Frontend deploy on Netlify and backend on Render
 - Username/Password authentication
+- Strong password enforcement
 - OAuth authentication (GitHub and Google)
 - `httpOnly` cookies for session management
 - Client and server code written in a modular and highly scalable way
-- Profile image stored in Cloudinary
+- Profile images stored in Cloudinary
 - Automatic dark mode
 - Redis database for session storage
 - Query and modify local Redis entries in real time
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+### Signup (desktop, light theme)
+
+![signup-desktop-light](./images/signup-desktop-light.png)
+
+### Login (desktop, dark theme)
+
+![login-desktop-dark](./images/login-desktop-dark.png)
+
+### Welcome page (desktop, light theme)
+
+![welcome-desktop-light](./images/welcome-desktop-light.png)
+
+### Profile (mobile, light theme)
+
+![profile-mobile-light](./images/profile-mobile-light.png)
+
+### Profile edit (desktop, light theme)
+
+![profile-edit-desktop-light](./images/profile-edit-desktop-light.png)
 
 ## Getting started
 
 After grabbing a local copy of the repository, you can start the backend server in development or production mode, by issuing either `npm run start:dev` or `npm run start` respectively, from inside `backend/` folder.
 
-The difference between development and production modes is that the session storage mechanism. In the first, the session is stored in a local Redis database; in the later, it's stored in-memory, through the `memorystore` package. When using Redis database locally, the package `redis-commander` allows to query and modify the entries in the database in realtime.
+When using Redis database locally, the package `redis-commander` allows to query and modify the entries in the database in realtime.
 
 In regard to the session, a secret must be provided in order to verify the authenticity of each user session (it's used to sign the session cookie).
 
-The user data is stored in a MongoDB.
+The user data is stored in a Mongo database.
 
 ### Environment variables
 
-The application expects certain environment variables:
+The application expects certain environment variables (provided values are template examples):
 
 ```bash
-MONGODB_URL=<string>
+PORT=5000
+
+MONGODB_URL="mongodb+srv://xxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Redis configuration only needed in development mode
-REDIS_HOST=<string>
-REDIS_PORT=<number>
+REDIS_HOST="localhost"
+REDIS_PORT=6379
 
 # Secret for signing the session cookie
-SESSION_SECRET=<string>
+SESSION_SECRET="xxxxxxxxxxxxxxxxxxxxxxxx"
 
 # OAuth
 # GitHub
-GITHUB_CLIENT_ID=<string>
-GITHUB_CLIENT_SECRET=<string>
+GITHUB_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxx"
+GITHUB_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxx"
 # Google
-GOOGLE_CLIENT_ID=<string>
-GOOGLE_CLIENT_SECRET=<string>
+GOOGLE_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxx"
+
+CLOUDINARY_URL="cloudinary://xxxxxxxxxxxxxxxxxxxxxxxx"
+
+FRONTEND_URL="http://xxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 ## Built With
