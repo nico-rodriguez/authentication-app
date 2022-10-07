@@ -16,6 +16,8 @@
   </h3>
 </div>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06f4d2e8-6a84-41d7-85e8-26eabf1515ac/deploy-status)](https://app.netlify.com/sites/authentication-app-473ad7/deploys)
+
 Visit [https://authentication-app-473ad7.netlify.app](https://authentication-app-473ad7.netlify.app).
 
 ## Features
@@ -34,6 +36,8 @@ It features:
 - Automatic dark mode
 - Redis database for session storage
 - Query and modify local Redis entries in real time
+
+**Note:** for the GitHub OAuth to work, third-party cookies must be enabled.
 
 ## Overview
 
