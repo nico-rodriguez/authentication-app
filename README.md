@@ -31,11 +31,11 @@ It features:
 - Strong password enforcement
 - OAuth authentication (GitHub and Google)
 - `httpOnly` cookies for session management
-- Client and server code written in a modular and highly scalable way
+- Client and server code are written in a modular and highly scalable way
 - Profile images stored in Cloudinary
 - Automatic dark mode
 - Redis database for session storage
-- Query and modify local Redis entries in real time
+- Query and modify local Redis entries in real-time
 
 **Note:** for the GitHub OAuth to work, third-party cookies must be enabled.
 
@@ -65,9 +65,9 @@ It features:
 
 After grabbing a local copy of the repository, you can start the backend server in development or production mode, by issuing either `npm run start:dev` or `npm run start` respectively, from inside `backend/` folder.
 
-When using Redis database locally, the package `redis-commander` allows to query and modify the entries in the database in realtime.
+When using Redis database locally, the package `redis-commander` allows one to query and modify the entries in the database in real time.
 
-In regard to the session, a secret must be provided in order to verify the authenticity of each user session (it's used to sign the session cookie).
+Regarding the session, a secret must be provided to verify the authenticity of each user session (it's used to sign the session cookie).
 
 The user data is stored in a Mongo database.
 
