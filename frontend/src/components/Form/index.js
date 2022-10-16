@@ -47,12 +47,14 @@ export function Form({ buttonText, handleFormData }) {
         </div>
         <div className='alternatives__items'>
           <a
+            title='Google'
             onClick={handleOAuth}
             href={`${constants.BACKEND_URL}/api/v1/auth/google`}
           >
             <img width='43' height='43' src={googleLogo} alt='Google logo' />
           </a>
           <a
+            title='GitHub'
             onClick={handleOAuth}
             href={`${constants.BACKEND_URL}/api/v1/auth/github`}
           >
