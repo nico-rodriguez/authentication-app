@@ -20,7 +20,9 @@
   font-size: 2rem;
   color: #fff;
   position: absolute;
-  top: calc(36px - 1rem);
+  /* half the picture height minus half the line height */
+  top: calc(36px - 1.5rem);
+  /* half the picture width minus half the font size */
   left: calc(36px - 1rem);
 }
 
