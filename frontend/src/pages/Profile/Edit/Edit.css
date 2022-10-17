@@ -1,5 +1,5 @@
 .profile-edit__back-link {
-  font-size: 1.8rem;
+  font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
   color: #2d9cdb;
@@ -26,7 +26,7 @@
 }
 
 .profile-edit__title {
-  font-size: 2.4rem;
+  font-size: var(--font-size-xxl);
   line-height: 3.3rem;
   letter-spacing: -0.035em;
   color: #000000;
@@ -35,7 +35,7 @@
 
 .profile-edit__description {
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #828282;

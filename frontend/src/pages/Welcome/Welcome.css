@@ -17,12 +17,12 @@
 }
 
 .welcome__title {
-  font-size: 2.4rem;
+  font-size: var(--font-size-xxl);
   line-height: 3.3rem;
 }
 
 .welcome__subtitle {
-  font-size: 2.1rem;
+  font-size: var(--font-size-xl);
   line-height: 2.8rem;
 }
 

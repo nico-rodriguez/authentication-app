@@ -11,7 +11,7 @@
 }
 
 .error-fallback a {
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
 }
 
 @media (prefers-color-scheme: dark) {

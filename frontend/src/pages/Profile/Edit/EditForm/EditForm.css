@@ -17,13 +17,13 @@
 #photo-input-label::after {
   content: '\e412';
   font-family: 'Material Symbols Rounded';
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
   color: #fff;
   position: absolute;
   /* half the picture height minus half the line height */
   top: calc(36px - 1.5rem);
   /* half the picture width minus half the font size */
-  left: calc(36px - 1rem);
+  left: calc(36px - (var(--font-size-xl) / 2));
 }
 
 #photo-input-label img {
@@ -34,7 +34,7 @@
   display: inline-block;
   margin-left: 24px;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #828282;
@@ -48,7 +48,7 @@
   display: block;
   margin-bottom: 4px;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #4f4f4f;
@@ -63,7 +63,7 @@
   border-radius: 12px;
   padding: 8px 12px;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #4f4f4f;
@@ -80,7 +80,7 @@
   border-radius: 12px;
   padding: 8px 12px;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #4f4f4f;
@@ -130,7 +130,7 @@
   padding: 8px 24px;
   border-radius: 8px;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: var(--font-size-md);
   line-height: 2.2rem;
   letter-spacing: -0.035em;
   color: #ffffff;

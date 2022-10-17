@@ -13,7 +13,7 @@
   font-weight: 500;
   letter-spacing: -0.035em;
   color: #4f4f4f;
-  font-size: 2.4rem;
+  font-size: var(--font-size-xxl);
   line-height: 3.3rem;
 }
 

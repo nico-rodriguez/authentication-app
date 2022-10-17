@@ -6,7 +6,7 @@
 .profile__header h1 {
   text-align: center;
   font-weight: 400;
-  font-size: 3.6rem;
+  font-size: var(--font-size-xxxl);
   line-height: 4.9rem;
   letter-spacing: -0.035em;
   color: #000000;
@@ -15,7 +15,7 @@
 
 @media only screen and (max-width: 425px) {
   .profile__header h1 {
-    font-size: 2.4rem;
+    font-size: var(--font-size-xxl);
     line-height: 3.3rem;
   }
 }
@@ -23,7 +23,7 @@
 .profile__header h2 {
   text-align: center;
   font-weight: 300;
-  font-size: 1.8rem;
+  font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
   color: #000000;
@@ -32,7 +32,7 @@
 
 @media only screen and (max-width: 425px) {
   .profile__header h2 {
-    font-size: 1.4rem;
+    font-size: var(--font-size-sm);
     line-height: 1.9rem;
   }
 }
@@ -65,7 +65,7 @@
 
 .profile__title {
   font-weight: 400;
-  font-size: 2.4rem;
+  font-size: var(--font-size-xxl);
   line-height: 3.3rem;
   letter-spacing: -0.035em;
   color: #000000;
@@ -73,7 +73,7 @@
 
 .profile__description {
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #828282;
@@ -81,7 +81,7 @@
 
 .profile__edit {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: var(--font-size-md);
   line-height: 2.2rem;
   letter-spacing: -0.035em;
   color: #828282;
@@ -110,7 +110,7 @@
   flex-basis: 40%;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
   color: #bdbdbd;
@@ -122,7 +122,7 @@
   flex-basis: 60%;
 
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
   color: #333333;
@@ -134,7 +134,7 @@
 
 @media only screen and (max-width: 425px) {
   .profile__item-content {
-    font-size: 1.6rem;
+    font-size: var(--font-size-md);
     line-height: 2.2rem;
     text-align: end;
   }
