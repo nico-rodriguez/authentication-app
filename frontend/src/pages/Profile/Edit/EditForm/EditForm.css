@@ -18,7 +18,7 @@
   content: '\e412';
   font-family: 'Material Symbols Rounded';
   font-size: var(--font-size-xl);
-  color: #fff;
+  color: var(--white);
   position: absolute;
   /* half the picture height minus half the line height */
   top: calc(36px - 1.5rem);
@@ -37,7 +37,7 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #828282;
+  color: var(--gray-1);
 }
 
 .profile-edit-form__item textarea {
@@ -51,7 +51,7 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #4f4f4f;
+  color: var(--black-3);
 }
 
 .profile-edit-form__item:not(:first-child) > *:nth-child(2) {
@@ -66,7 +66,7 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #4f4f4f;
+  color: var(--black-3);
   width: min(40ch, 100%);
 }
 
@@ -83,12 +83,12 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #4f4f4f;
+  color: var(--black-3);
 }
 
 .profile-edit-form__item:not(:first-child) input::placeholder,
 .profile-edit-form__item textarea::placeholder {
-  color: #bdbdbd;
+  color: var(--gray-2);
 }
 
 .profile-edit-form__show-password-button {
@@ -96,7 +96,7 @@
   background: none;
   margin-left: 10px;
   padding: calc(8px + 1px);
-  color: #828282;
+  color: var(--gray-1);
   cursor: pointer;
   line-height: 1.8rem;
   position: relative;
@@ -104,7 +104,7 @@
 
 @media (prefers-color-scheme: dark) {
   .profile-edit-form__show-password-button {
-    color: #ffffff;
+    color: var(--white);
   }
 }
 
@@ -133,16 +133,16 @@
   font-size: var(--font-size-md);
   line-height: 2.2rem;
   letter-spacing: -0.035em;
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
   #photo-input-text {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 
   .profile-edit-form__item:not(:first-child) label {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 }

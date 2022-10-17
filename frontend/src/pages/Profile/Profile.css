@@ -9,7 +9,7 @@
   font-size: var(--font-size-xxxl);
   line-height: 4.9rem;
   letter-spacing: -0.035em;
-  color: #000000;
+  color: var(--black-1);
   margin-bottom: 8px;
 }
 
@@ -26,7 +26,7 @@
   font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
-  color: #000000;
+  color: var(--black-1);
   margin-bottom: 44px;
 }
 
@@ -68,7 +68,7 @@
   font-size: var(--font-size-xxl);
   line-height: 3.3rem;
   letter-spacing: -0.035em;
-  color: #000000;
+  color: var(--black-1);
 }
 
 .profile__description {
@@ -76,7 +76,7 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #828282;
+  color: var(--gray-1);
 }
 
 .profile__edit {
@@ -84,7 +84,7 @@
   font-size: var(--font-size-md);
   line-height: 2.2rem;
   letter-spacing: -0.035em;
-  color: #828282;
+  color: var(--gray-1);
   border: 1px solid #828282;
   border-radius: 12px;
   padding: 8px 32px;
@@ -113,7 +113,7 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #bdbdbd;
+  color: var(--gray-2);
   display: flex;
   align-items: center;
 }
@@ -125,7 +125,7 @@
   font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
-  color: #333333;
+  color: var(--black-2);
 
   white-space: nowrap;
   overflow: hidden;
@@ -154,7 +154,7 @@
 @media (prefers-color-scheme: dark) {
   .profile__header h1,
   .profile__header h2 {
-    color: #ffffff;
+    color: var(--white);
   }
 
   .profile__title,
@@ -162,6 +162,6 @@
   .profile__edit,
   .profile__item-content,
   .profile__item-label {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 }

@@ -1,5 +1,5 @@
 .welcome {
-  background-color: #ffffff;
+  background-color: var(--white);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -13,7 +13,7 @@
 .welcome__subtitle {
   font-weight: 500;
   letter-spacing: -0.035em;
-  color: #4f4f4f;
+  color: var(--black-3);
 }
 
 .welcome__title {
@@ -28,11 +28,11 @@
 
 @media (prefers-color-scheme: dark) {
   .welcome {
-    background-color: #333333;
+    background-color: var(--black-2);
   }
 
   .welcome__title,
   .welcome__subtitle {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 }

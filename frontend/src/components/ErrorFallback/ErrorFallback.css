@@ -6,8 +6,8 @@
   justify-content: center;
   flex-direction: column;
   gap: 15px;
-  color: #4f4f4f;
-  background-color: #ffffff;
+  color: var(--black-3);
+  background-color: var(--white);
 }
 
 .error-fallback a {
@@ -16,7 +16,7 @@
 
 @media (prefers-color-scheme: dark) {
   .error-fallback {
-    color: #e0e0e0;
-    background-color: #333333;
+    color: var(--gray-3);
+    background-color: var(--black-2);
   }
 }

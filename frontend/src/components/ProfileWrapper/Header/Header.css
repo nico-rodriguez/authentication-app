@@ -22,7 +22,7 @@
   font-size: var(--font-size-xxs);
   line-height: 1.6rem;
   letter-spacing: -0.035em;
-  color: #333333;
+  color: var(--black-2);
 }
 
 @media only screen and (max-width: 425px) {
@@ -41,7 +41,7 @@
 }
 
 .profile-header__dropdown {
-  background-color: #fff;
+  background-color: var(--white);
   width: 25ch;
   display: none;
   position: absolute;
@@ -51,7 +51,7 @@
   font-size: var(--font-size-xxs);
   line-height: 1.6rem;
   letter-spacing: -0.035em;
-  color: #4f4f4f;
+  color: var(--black-3);
   border: 1px solid #e0e0e0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
   border-radius: 12px;
@@ -82,7 +82,7 @@
 .profile-header__dropdown > *:nth-child(3) {
   padding: 0;
   height: 1px;
-  background-color: #e0e0e0;
+  background-color: var(--gray-3);
 }
 
 .profile-header__dropdown > *:last-child::before {
@@ -100,7 +100,7 @@
 }
 
 .profile-header__dropdown > *:last-child {
-  color: #eb5757;
+  color: var(--red);
   font-size: var(--font-size-sm);
   margin-top: 10px;
 }
@@ -109,14 +109,14 @@
   .profile-header,
   .profile-header__user-name,
   .profile-header__dropdown {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 
   .profile-header__dropdown {
-    background-color: #333333;
+    background-color: var(--black-2);
   }
 
   .profile-header__dropdown > *:not(:last-child):hover {
-    color: #333333;
+    color: var(--black-2);
   }
 }

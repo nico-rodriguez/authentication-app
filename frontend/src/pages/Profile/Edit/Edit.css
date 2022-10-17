@@ -2,7 +2,7 @@
   font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
-  color: #2d9cdb;
+  color: var(--blue-2);
 }
 
 @media only screen and (max-width: 425px) {
@@ -29,7 +29,7 @@
   font-size: var(--font-size-xxl);
   line-height: 3.3rem;
   letter-spacing: -0.035em;
-  color: #000000;
+  color: var(--black-1);
   margin-bottom: 4px;
 }
 
@@ -38,15 +38,15 @@
   font-size: var(--font-size-xs);
   line-height: 1.8rem;
   letter-spacing: -0.035em;
-  color: #828282;
+  color: var(--gray-1);
 }
 
 @media (prefers-color-scheme: dark) {
   .profile-edit__title {
-    color: #ffffff;
+    color: var(--white);
   }
 
   .profile-edit__description {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 }

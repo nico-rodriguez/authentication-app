@@ -7,4 +7,15 @@
   --font-size-xl: 2.1rem;
   --font-size-xxl: 2.4rem;
   --font-size-xxxl: 3.6rem;
+
+  --white: #ffffff;
+  --red: #eb5757;
+  --blue-2: #2d9cdb;
+  --blue-1: #2f80ed;
+  --gray-3: #e0e0e0;
+  --gray-2: #bdbdbd;
+  --gray-1: #828282;
+  --black-3: #4f4f4f;
+  --black-2: #333333;
+  --black-1: #000000;
 }

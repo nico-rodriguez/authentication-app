@@ -36,7 +36,7 @@
   font-size: var(--font-size-lg);
   line-height: 2.5rem;
   letter-spacing: -0.035em;
-  color: #333333;
+  color: var(--black-2);
   margin-top: 32px;
 }
 
@@ -44,7 +44,7 @@
   font-size: var(--font-size-md);
   line-height: 2.2rem;
   letter-spacing: -0.035em;
-  color: #333333;
+  color: var(--black-2);
   margin-top: 14px;
 }
 
@@ -53,21 +53,21 @@
   line-height: 1.9rem;
   text-align: center;
   letter-spacing: -0.035em;
-  color: #828282;
+  color: var(--gray-1);
   margin-top: 27px;
 }
 
 .main__link {
-  color: #2f80ed;
+  color: var(--blue-1);
 }
 
 @media (prefers-color-scheme: dark) {
   .app {
-    background-color: #333333;
+    background-color: var(--black-2);
   }
 
   .main__header-2,
   .main__content {
-    color: #e0e0e0;
+    color: var(--gray-3);
   }
 }
