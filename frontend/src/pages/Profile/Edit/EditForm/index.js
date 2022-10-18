@@ -6,7 +6,7 @@ import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from 'context/user';
-import { useToggle } from 'hooks';
+import { useToggle } from 'hooks/useToggle';
 
 const EditForm = () => {
   const { user, setUser } = useContext(UserContext);

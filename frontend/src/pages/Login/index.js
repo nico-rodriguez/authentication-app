@@ -5,7 +5,7 @@ import userApi from 'api/users';
 
 import { useContext } from 'react';
 import { UserContext } from 'context/user';
-import { useLogo } from 'hooks';
+import { useLogo } from 'hooks/useLogo';
 
 export default function Login() {
   const navigate = useNavigate();

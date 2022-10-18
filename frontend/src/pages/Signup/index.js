@@ -5,7 +5,7 @@ import { Form } from 'components/Form';
 
 import userApi from 'api/users';
 import { UserContext } from 'context/user';
-import { useLogo } from 'hooks';
+import { useLogo } from 'hooks/useLogo';
 
 export default function Signup() {
   const navigate = useNavigate();
