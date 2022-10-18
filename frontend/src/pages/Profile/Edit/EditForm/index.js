@@ -6,12 +6,10 @@ import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from 'context/user';
-import { ToastContext } from 'context/toast';
 import { useToggle } from 'hooks';
 
 const EditForm = () => {
   const { user, setUser } = useContext(UserContext);
-  const { toastId } = useContext(ToastContext);
 
   const [userPhoto, setUserPhoto] = useState(() => user.photo);
   const [showPassword, toggleShowPassword] = useToggle(false);
@@ -63,7 +61,7 @@ const EditForm = () => {
       return;
     }
 
-    const userProfile = await userApi.editProfile(editFields, toastId);
+    const userProfile = await userApi.editProfile(editFields);
     if (userProfile) {
       setUser(userProfile);
       const form = event.target;
