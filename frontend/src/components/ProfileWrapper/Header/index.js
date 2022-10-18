@@ -1,15 +1,14 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from 'context/user';
 import storage from 'utils/storage';
 import { useLogo } from 'hooks/useLogo';
 import constants from 'constants/index';
+import { useUser } from 'hooks/useUser';
 
 export default function Header() {
   const logo = useLogo();
 
-  const { user } = useContext(UserContext);
+  const { user } = useUser();
 
   const handleLogout = () => {
     storage.clear();

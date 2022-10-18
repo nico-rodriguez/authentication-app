@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Form } from 'components/Form';
 
 import userApi from 'api/users';
-import { UserContext } from 'context/user';
 import { useLogo } from 'hooks/useLogo';
+import { useUser } from 'hooks/useUser';
 
 export default function Signup() {
   const navigate = useNavigate();
   const logo = useLogo();
 
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn } = useUser();
 
   const handleFormData = async (email, password) => {
     const successfulSignup = await userApi.signup(email, password);

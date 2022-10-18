@@ -1,11 +1,11 @@
 import userApi from 'api/users';
-import { UserContext } from 'context/user';
-import { useContext, useEffect } from 'react';
+import { useUser } from 'hooks/useUser';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Authenticating.css';
 
 const Authenticating = () => {
-  const { setAuthenticating, setIsLoggedIn, setUser } = useContext(UserContext);
+  const { setAuthenticating, setIsLoggedIn, setUser } = useUser();
 
   const navigate = useNavigate();
 

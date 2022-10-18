@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
-
 import githubLogo from './Github.svg';
 import googleLogo from './Google.svg';
 
 import './Form.css';
-import { UserContext } from 'context/user';
 
 import constants from 'constants/index';
+import { useUser } from 'hooks/useUser';
 
 export function Form({ buttonText, handleFormData }) {
-  const { setAuthenticating } = useContext(UserContext);
+  const { setAuthenticating } = useUser();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -1,13 +1,12 @@
-import { UserContext } from 'context/user';
-import { useContext } from 'react';
 import privateRoutes from './private';
 import publicRoutes from './public';
 
 import { useRoutes } from 'react-router-dom';
 import authenticatingRoute from './authenticating';
+import { useUser } from 'hooks/useUser';
 
 export const AppRoutes = () => {
-  const { isLoggedIn, isAuthenticating } = useContext(UserContext);
+  const { isLoggedIn, isAuthenticating } = useUser();
 
   const routes = isLoggedIn
     ? privateRoutes

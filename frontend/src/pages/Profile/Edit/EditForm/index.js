@@ -1,15 +1,15 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import intlTelInput from 'intl-tel-input';
 import userApi from 'api/users';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from 'context/user';
 import { useToggle } from 'hooks/useToggle';
+import { useUser } from 'hooks/useUser';
 
 const EditForm = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUser();
 
   const [userPhoto, setUserPhoto] = useState(() => user.photo);
   const [showPassword, toggleShowPassword] = useToggle(false);

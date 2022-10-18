@@ -3,16 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'components/Form';
 import userApi from 'api/users';
 
-import { useContext } from 'react';
-import { UserContext } from 'context/user';
 import { useLogo } from 'hooks/useLogo';
+import { useUser } from 'hooks/useUser';
 
 export default function Login() {
   const navigate = useNavigate();
 
   const logo = useLogo();
 
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn } = useUser();
 
   const handleFormData = async (email, password) => {
     const successfulLogin = await userApi.login(email, password);

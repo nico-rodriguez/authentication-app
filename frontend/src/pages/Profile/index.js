@@ -1,11 +1,10 @@
-import { UserContext } from 'context/user';
-import { useContext } from 'react';
+import { useUser } from 'hooks/useUser';
 import { Link } from 'react-router-dom';
 
 import './Profile.css';
 
 export default function Profile() {
-  const { user } = useContext(UserContext);
+  const { user } = useUser();
 
   return (
     <div className='profile'>
