@@ -30,10 +30,7 @@ const getProfile = async () => {
   } catch (error) {}
 };
 
-const editProfile = async (
-  { photo, name, bio, phone, email, password },
-  toastId
-) => {
+const editProfile = async ({ photo, name, bio, phone, email, password }) => {
   const editData = new FormData();
   photo && editData.append('photo', photo, photo.name);
   editData.append('name', name);
@@ -43,28 +40,18 @@ const editProfile = async (
   editData.append('password', password);
 
   try {
-    const newProfile = await axios.post('profile/edit', editData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      onUploadProgress: ({ loaded, total }) => {
-        const progress = loaded / total;
-
-        if (toastId.current === null) {
-          toastId.current = toast('Upload in progress', {
-            progress,
-            pauseOnFocusLoss: false,
-            pauseOnHover: false,
-          });
-        } else {
-          toast.update(toastId.current, { progress });
-        }
-      },
-    });
-    toast.done(toastId.current);
-    toast.dismiss(toastId.current);
-    toastId.current = null;
-    toast.success('Profile edited successfully');
+    const newProfile = await toast.promise(
+      axios.post('profile/edit', editData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }),
+      {
+        pending: 'Updating profile...',
+        success: 'Profile edited successfully',
+        error: "Couldn't edit profile",
+      }
+    );
     return newProfile;
   } catch (error) {}
 };
