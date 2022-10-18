@@ -14,7 +14,7 @@ const signup = async (email, password) => {
 
 const login = async (email, password) => {
   try {
-    toast.promise(axios.post('login', { email, password }), {
+    await toast.promise(axios.post('login', { email, password }), {
       pending: 'Logging in...',
       success: 'Logged in successfully',
       error: "Couldn't log in",
