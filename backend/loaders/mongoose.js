@@ -3,6 +3,8 @@ const config = require('../config');
 
 if (config.NODE_ENV === 'development') {
   const { MongoMemoryServer } = require('mongodb-memory-server');
+  const User = require('../models/User');
+  const usersData = require('../data/users');
 
   MongoMemoryServer.create().then((mongodb) => {
     const uri = mongodb.getUri();
@@ -11,6 +13,14 @@ if (config.NODE_ENV === 'development') {
       .connect(uri)
       .then(() => {
         console.log('Connected to users database!');
+        Promise.all(
+          usersData.map(({ name, password, email, phone }) =>
+            User.register(new User({ name, email, phone }), password)
+          )
+        );
+      })
+      .then(() => {
+        console.log('Added users test data');
       })
       .catch((err) => {
         console.error('Could not connect to users database.');
