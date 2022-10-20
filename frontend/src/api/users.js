@@ -6,7 +6,6 @@ const signup = async (email, password) => {
     await toast.promise(axios.post('signup', { email, password }), {
       pending: 'Signing up...',
       success: 'Signed up successfully',
-      error: "Couldn't sign up",
     });
     return true;
   } catch (error) {}
@@ -17,7 +16,6 @@ const login = async (email, password) => {
     await toast.promise(axios.post('login', { email, password }), {
       pending: 'Logging in...',
       success: 'Logged in successfully',
-      error: "Couldn't log in",
     });
     return true;
   } catch (error) {}
