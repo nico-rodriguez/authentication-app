@@ -2,6 +2,7 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const config = require('../config');
+const CookieError = require('../errors/auth');
 
 const User = require('../models/User.js');
 
@@ -100,7 +101,7 @@ passport.deserializeUser(async (id, done) => {
       done(null, user);
     } else {
       console.error(`Couldn't find user with id ${id}`);
-      done(new Error("Couldn't find user"));
+      done(new CookieError("Couldn't find user"));
     }
   } catch (error) {
     done(error);
