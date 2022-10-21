@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
-
-const User = require('../../models/User.js');
+const { register } = require('../../service/user');
 
 const router = Router();
 
@@ -9,7 +8,7 @@ router.post(
   '/',
   async function (req, res, next) {
     const { email, password } = req.body;
-    await User.register(new User({ email }), password);
+    await register(email, password);
     next();
   },
   passport.authenticate('local'),
