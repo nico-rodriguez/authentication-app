@@ -100,8 +100,7 @@ passport.deserializeUser(async (id, done) => {
     if (user) {
       done(null, user);
     } else {
-      console.error(`Couldn't find user with id ${id}`);
-      done(new CookieError("Couldn't find user"));
+      done(new CookieError('Unauthorized'));
     }
   } catch (error) {
     done(error);
