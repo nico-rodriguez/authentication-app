@@ -1,3 +1,4 @@
+const authErrorHandler = require('../middleware/authError');
 const defaultErrorHandler = require('../middleware/defaultError');
 const mongooseErrorHandler = require('../middleware/mongooseErrors');
 const multerErrorHandler = require('../middleware/multerErrors');
@@ -60,6 +61,7 @@ module.exports = function (session) {
 
   app.use(`${basePath}/profile`, profileRouter);
 
+  app.use(authErrorHandler);
   app.use(mongooseErrorHandler);
   app.use(passwordErrorHandler);
   app.use(multerErrorHandler);
