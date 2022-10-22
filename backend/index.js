@@ -1,3 +1,5 @@
+require('./loaders/process');
+
 // Connect to database
 require('./loaders/mongoose');
 
