@@ -21,6 +21,11 @@ function mongooseErrorHandler(err, req, res, next) {
 
   if (isForbiddenError) {
     res.status(403);
+
+    if (err.name === 'UserExistsError') {
+      return res.json('Username or password invalid');
+    }
+
     return res.json(err.message);
   }
 
@@ -32,7 +37,7 @@ function mongooseErrorHandler(err, req, res, next) {
   if (isDatabaseError) {
     if (err.message.includes('E11000 duplicate key error')) {
       res.status(400);
-      return res.json('Username already taken');
+      return res.json('Username or password invalid');
     }
   }
 
