@@ -26,9 +26,10 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 It features:
 
-- Frontend deploy on Netlify and backend on Render
+- Frontend deployed on Netlify; backend on Render
 - Username/Password authentication
-- Strong password enforcement
+- Strong password policy enforcement
+- Rate limit to account creation and profile edition
 - OAuth authentication (GitHub and Google)
 - `httpOnly` cookies for session management
 - Client and server code are written in a modular and highly scalable way
@@ -99,6 +100,12 @@ CLOUDINARY_URL="cloudinary://xxxxxxxxxxxxxxxxxxxxxxxx"
 
 FRONTEND_URL="http://xxxxxxxxxxxxxxxxxxxxxxxx"
 ```
+
+## Deployment
+
+It's recommended to set up two OAuth applications: one for testing and another for production. Also, environment variables may be set with values different as those of development.
+
+For the rate limiter, a store more appropriate for production should be used (`memory-store` is currently used).
 
 ## Built With
 
