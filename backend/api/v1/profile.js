@@ -11,7 +11,7 @@ router.get('/', isUserAuth, (req, res) => {
   return res.json(user);
 });
 
-router.post('/edit', isUserAuth, upload, async (req, res, next) => {
+router.post('/edit', isUserAuth, upload, async (req, res) => {
   const { name, bio, phone, email, password } = req.body;
   const { user, file } = req;
 
