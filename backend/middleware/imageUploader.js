@@ -26,7 +26,7 @@ const upload = multer({
       return cb(null, true);
     }
 
-    return cb(new MulterError('Invalid file type. Must be JPEG or PNG'));
+    return cb(new MulterError('LIMIT_UNEXPECTED_FILE'));
   },
 }).single('photo');
 
