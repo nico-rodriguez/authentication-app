@@ -22,6 +22,12 @@ const { GOOGLE_CLIENT_SECRET } = process.env;
 
 const { FRONTEND_URL } = process.env;
 
+const COOKIE_SETTINGS = {
+  maxAge: 1000 * 60 * 60 * 24,
+  sameSite: NODE_ENV === 'production' ? 'none' : 'strict',
+  secure: NODE_ENV === 'production',
+};
+
 module.exports = {
   PORT,
   NODE_ENV,
@@ -34,4 +40,5 @@ module.exports = {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   FRONTEND_URL,
+  COOKIE_SETTINGS,
 };
