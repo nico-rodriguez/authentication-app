@@ -2,6 +2,7 @@ const { Router } = require('express');
 const isUserAuth = require('../../middleware/auth');
 const { editProfile } = require('../../service/user');
 const upload = require('../../middleware/imageUploader');
+const { profileLimiter } = require('../../middleware/rateLimit');
 
 const router = Router();
 
@@ -11,7 +12,7 @@ router.get('/', isUserAuth, (req, res) => {
   return res.json(user);
 });
 
-router.post('/edit', isUserAuth, upload, async (req, res) => {
+router.post('/edit', profileLimiter, isUserAuth, upload, async (req, res) => {
   const { name, bio, phone, email, password } = req.body;
   const { user, file } = req;
 

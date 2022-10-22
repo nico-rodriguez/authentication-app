@@ -3,6 +3,7 @@ const defaultErrorHandler = require('../middleware/defaultError');
 const mongooseErrorHandler = require('../middleware/mongooseErrors');
 const multerErrorHandler = require('../middleware/multerErrors');
 const passwordErrorHandler = require('../middleware/passwordErrors');
+const { signupLimiter } = require('../middleware/rateLimit');
 
 module.exports = (session) => {
   const express = require('express');
@@ -51,7 +52,7 @@ module.exports = (session) => {
   // Use routes
   const basePath = '/api/v1';
 
-  app.use(`${basePath}/signup`, signupRouter);
+  app.use(`${basePath}/signup`, signupLimiter, signupRouter);
   app.use(`${basePath}/login`, loginRouter);
   app.use(`${basePath}/logout`, logoutRouter);
 
