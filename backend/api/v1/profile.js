@@ -15,19 +15,15 @@ router.post('/edit', isUserAuth, upload, async (req, res, next) => {
   const { name, bio, phone, email, password } = req.body;
   const { user, file } = req;
 
-  try {
-    const updatedUser = await editProfile(user, {
-      name,
-      bio,
-      phone,
-      email,
-      password,
-      file,
-    });
-    return res.json(updatedUser);
-  } catch (error) {
-    return next(error);
-  }
+  const updatedUser = await editProfile(user, {
+    name,
+    bio,
+    phone,
+    email,
+    password,
+    file,
+  });
+  return res.json(updatedUser);
 });
 
 module.exports = router;
