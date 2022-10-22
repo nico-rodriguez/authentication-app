@@ -1,8 +1,8 @@
 // Connect to database
-require('./loaders/mongoose.js');
+require('./loaders/mongoose');
 
 // Connect to session database
-const session = require('./loaders/session.js');
+const session = require('./loaders/session');
 
 // Initialize the server
-require('./loaders/express.js')(session);
+require('./loaders/express')(session);

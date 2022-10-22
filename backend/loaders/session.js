@@ -1,10 +1,10 @@
 const session = require('express-session');
-const config = require('../config');
 
 // Configuration of the store for the session of express-session
 // Redis configuration and connection (only in development)
 const RedisStore = require('connect-redis')(session);
 const Redis = require('ioredis');
+const config = require('../config');
 
 const redisClient = new Redis({
   host: config.REDIS_HOST,

@@ -58,7 +58,8 @@ passwordSchema
 // Add a username, hash and salt fields.
 UserSchema.plugin(passportLocalMongoose, {
   // Complete list of options: https://github.com/saintedlama/passport-local-mongoose#main-options
-  // Interval in milliseconds between login attempts (increases exponentially based on the number of failed attempts)
+  // Interval in milliseconds between login attempts
+  // Increases exponentially based on the number of failed attempts
   interval: 100,
   // Maximum amount of time an account can be locked
   maxInterval: 1000 * 60 * 5,
@@ -108,6 +109,11 @@ UserSchema.plugin(passportLocalMongoose, {
           return cb({
             name: 'PasswordHasSpaces',
             message: 'Password must not have spaces',
+          });
+        default:
+          return cb({
+            name: 'UnknownError',
+            massage: 'Unknown password error',
           });
       }
     }

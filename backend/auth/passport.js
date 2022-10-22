@@ -4,7 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const config = require('../config');
 const CookieError = require('../errors/auth');
 
-const User = require('../models/User.js');
+const User = require('../models/User');
 
 // Use mongoose local strategy
 passport.use(User.createStrategy());
@@ -41,9 +41,8 @@ passport.use(
           }).save();
 
           return done(null, newUser);
-        } else {
-          return done(null, user);
         }
+        return done(null, user);
       } catch (error) {
         return done(error);
       }
@@ -76,9 +75,8 @@ passport.use(
             }),
           }).save();
           return done(null, newUser);
-        } else {
-          return done(null, user);
         }
+        return done(null, user);
       } catch (error) {
         return done(error);
       }

@@ -3,7 +3,7 @@ const passport = require('passport');
 
 const router = Router();
 
-router.post('/', passport.authenticate('local'), function (req, res) {
+router.post('/', passport.authenticate('local'), (req, res) => {
   res.sendStatus(200);
 });
 

@@ -12,7 +12,7 @@ router.get(
   })
 );
 
-//Redirect to /authenticating page after successful OAuth authentication with Google
+// Redirect to /authenticating page after successful OAuth authentication with Google
 router.get(
   '/callback',
   passport.authenticate('google', {

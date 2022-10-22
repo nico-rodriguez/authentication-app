@@ -17,20 +17,26 @@ function mongooseErrorHandler(err, req, res, next) {
   if (isBadRequestError) {
     res.status(400);
     return res.json(err.message);
-  } else if (isForbiddenError) {
+  }
+
+  if (isForbiddenError) {
     res.status(403);
     return res.json(err.message);
-  } else if (isTooManyRequestError) {
+  }
+
+  if (isTooManyRequestError) {
     res.status(429);
     return res.json(err.message);
-  } else if (isDatabaseError) {
+  }
+
+  if (isDatabaseError) {
     if (err.message.includes('E11000 duplicate key error')) {
       res.status(400);
       return res.json('Username already taken');
     }
   }
 
-  next(err);
+  return next(err);
 }
 
 module.exports = mongooseErrorHandler;

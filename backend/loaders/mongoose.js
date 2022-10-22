@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const config = require('../config');
 
 if (config.NODE_ENV === 'development') {
+  // eslint-disable-next-line import/no-extraneous-dependencies
   const { MongoMemoryServer } = require('mongodb-memory-server');
   const User = require('../models/User');
   const usersData = require('../data/users');

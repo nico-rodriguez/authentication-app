@@ -4,7 +4,7 @@ const mongooseErrorHandler = require('../middleware/mongooseErrors');
 const multerErrorHandler = require('../middleware/multerErrors');
 const passwordErrorHandler = require('../middleware/passwordErrors');
 
-module.exports = function (session) {
+module.exports = (session) => {
   const express = require('express');
   require('express-async-errors');
   const compression = require('compression');
@@ -12,14 +12,14 @@ module.exports = function (session) {
   const helmet = require('helmet');
   const config = require('../config');
 
-  const signupRouter = require('../api/v1/signup.js');
-  const loginRouter = require('../api/v1/login.js');
-  const logoutRouter = require('../api/v1/logout.js');
-  const githubOAuthRouter = require('../api/v1/github.js');
-  const googleOAuthRouter = require('../api/v1/google.js');
-  const profileRouter = require('../api/v1/profile.js');
+  const signupRouter = require('../api/v1/signup');
+  const loginRouter = require('../api/v1/login');
+  const logoutRouter = require('../api/v1/logout');
+  const githubOAuthRouter = require('../api/v1/github');
+  const googleOAuthRouter = require('../api/v1/google');
+  const profileRouter = require('../api/v1/profile');
 
-  const passport = require('../auth/passport.js');
+  const passport = require('../auth/passport');
 
   const app = express();
 
@@ -35,7 +35,7 @@ module.exports = function (session) {
 
   app.use(
     cors({
-      origin: config.FRONTEND_URL, // allow to server to accept request from different origin
+      origin: config.FRONTEND_URL,
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true, // allow session cookie from browser to pass through
     })

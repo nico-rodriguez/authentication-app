@@ -5,7 +5,7 @@ const upload = require('../../middleware/imageUploader');
 
 const router = Router();
 
-router.get('/', isUserAuth, function (req, res) {
+router.get('/', isUserAuth, (req, res) => {
   const { user } = req;
 
   return res.json(user);

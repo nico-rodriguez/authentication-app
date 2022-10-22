@@ -14,7 +14,7 @@ function passwordErrorHandler(err, req, res, next) {
     return res.json(err.message);
   }
 
-  next(err);
+  return next(err);
 }
 
 module.exports = passwordErrorHandler;

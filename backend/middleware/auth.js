@@ -5,7 +5,7 @@ function isUserAuth(req, res, next) {
     return res.redirect(401, `${config.FRONTEND_URL}/login`);
   }
 
-  next();
+  return next();
 }
 
 module.exports = isUserAuth;

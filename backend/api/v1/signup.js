@@ -6,13 +6,13 @@ const router = Router();
 
 router.post(
   '/',
-  async function (req, res, next) {
+  async (req, res, next) => {
     const { email, password } = req.body;
     await register(email, password);
     next();
   },
   passport.authenticate('local'),
-  (req, res, next) => {
+  (req, res) => {
     // send the response together with the session cookie
     res.sendStatus(200);
   }

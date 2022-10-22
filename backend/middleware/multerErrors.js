@@ -6,7 +6,7 @@ function multerErrorHandler(err, req, res, next) {
     return res.json(err.message);
   }
 
-  next(err);
+  return next(err);
 }
 
 module.exports = multerErrorHandler;

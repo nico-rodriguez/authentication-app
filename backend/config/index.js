@@ -1,26 +1,26 @@
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 
-const MONGODB_URL = process.env.MONGODB_URL;
+const { MONGODB_URL } = process.env;
 
 // Redis configuration only needed in development mode
-const REDIS_HOST = process.env.REDIS_HOST;
-const REDIS_PORT = process.env.REDIS_PORT;
+const { REDIS_HOST } = process.env;
+const { REDIS_PORT } = process.env;
 
 // Secret for signing the session cookie
-const SESSION_SECRET = process.env.SESSION_SECRET;
+const { SESSION_SECRET } = process.env;
 
 // OAuth
 // GitHub
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+const { GITHUB_CLIENT_ID } = process.env;
+const { GITHUB_CLIENT_SECRET } = process.env;
 // Google
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const { GOOGLE_CLIENT_ID } = process.env;
+const { GOOGLE_CLIENT_SECRET } = process.env;
 
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const { FRONTEND_URL } = process.env;
 
 module.exports = {
   PORT,

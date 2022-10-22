@@ -12,7 +12,7 @@ router.get(
   })
 );
 
-//Redirect to /authenticating page after successful OAuth authentication with GitHub
+// Redirect to /authenticating page after successful OAuth authentication with GitHub
 router.get(
   '/callback',
   passport.authenticate('github', {
