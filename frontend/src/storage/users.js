@@ -18,6 +18,8 @@ const isAuthenticating = () =>
 const setAuthenticating = (isAuthenticating) =>
   storage.setToken(constants.AUTHENTICATING_STORAGE_KEY, isAuthenticating);
 
+const clear = () => storage.clear();
+
 const userStorage = {
   setUser,
   getUser,
@@ -25,6 +27,7 @@ const userStorage = {
   logIn,
   isAuthenticating,
   setAuthenticating,
+  clear,
 };
 
 export default userStorage;
