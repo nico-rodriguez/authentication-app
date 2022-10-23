@@ -122,4 +122,13 @@ UserSchema.plugin(passportLocalMongoose, {
   },
 });
 
+UserSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    delete returnedObject.attempts;
+    delete returnedObject.last;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
+
 module.exports = mongoose.model('User', UserSchema);
