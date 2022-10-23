@@ -12,7 +12,7 @@ const profileLimiter = rateLimit({
 
 const signupLimiter = rateLimit({
   windowMs: ONE_HOUR,
-  max: 2, // Limit each IP to 1 /signup requests per `window` (here, per hour)
+  max: 6, // Limit each IP to 1 /signup requests per `window` (here, per hour)
   message: 'Too requests from this IP, please try again after an hour',
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
