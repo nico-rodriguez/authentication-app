@@ -4,6 +4,7 @@ const mongooseErrorHandler = require('../middleware/mongooseErrors');
 const multerErrorHandler = require('../middleware/multerErrors');
 const passwordErrorHandler = require('../middleware/passwordErrors');
 const { signupLimiter } = require('../middleware/rateLimit');
+const userDataErrorHandler = require('../middleware/userDataError');
 
 module.exports = (session) => {
   const express = require('express');
@@ -66,6 +67,7 @@ module.exports = (session) => {
   app.use(mongooseErrorHandler);
   app.use(passwordErrorHandler);
   app.use(multerErrorHandler);
+  app.use(userDataErrorHandler);
   app.use(defaultErrorHandler);
 
   // Start server
