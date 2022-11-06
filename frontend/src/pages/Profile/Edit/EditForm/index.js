@@ -6,12 +6,9 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useToggle } from 'hooks/useToggle';
 import { useUser } from 'hooks/useUser';
-import { useAxios } from 'hooks/useAxios';
 import { useUserApi } from 'hooks/useUserApi';
 
 const EditForm = () => {
-  const axios = useAxios();
-
   const { user, setUser } = useUser();
 
   const userApi = useUserApi();
@@ -66,7 +63,7 @@ const EditForm = () => {
       return;
     }
 
-    const userProfile = await userApi.editProfile(axios, editFields);
+    const userProfile = await userApi.editProfile(editFields);
     if (userProfile) {
       setUser(userProfile);
       const form = event.target;
