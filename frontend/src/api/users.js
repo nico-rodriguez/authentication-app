@@ -1,7 +1,6 @@
-import axios from 'lib/axios';
 import { toast } from 'react-toastify';
 
-const signup = async (email, password) => {
+const signup = async (axios, email, password) => {
   try {
     await toast.promise(axios.post('signup', { email, password }), {
       pending: 'Signing up...',
@@ -11,7 +10,7 @@ const signup = async (email, password) => {
   } catch (error) {}
 };
 
-const login = async (email, password) => {
+const login = async (axios, email, password) => {
   try {
     await toast.promise(axios.post('login', { email, password }), {
       pending: 'Logging in...',
@@ -21,14 +20,17 @@ const login = async (email, password) => {
   } catch (error) {}
 };
 
-const getProfile = async () => {
+const getProfile = async (axios) => {
   try {
     const user = await axios.get('profile');
     return user;
   } catch (error) {}
 };
 
-const editProfile = async ({ photo, name, bio, phone, email, password }) => {
+const editProfile = async (
+  axios,
+  { photo, name, bio, phone, email, password }
+) => {
   const editData = new FormData();
   photo && editData.append('photo', photo, photo.name);
   editData.append('name', name);

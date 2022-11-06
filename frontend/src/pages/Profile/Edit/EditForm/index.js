@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import intlTelInput from 'intl-tel-input';
-import userApi from 'api/users';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './EditForm.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useToggle } from 'hooks/useToggle';
 import { useUser } from 'hooks/useUser';
+import { useAxios } from 'hooks/useAxios';
+import { useUserApi } from 'hooks/useUserApi';
 
 const EditForm = () => {
+  const axios = useAxios();
+
   const { user, setUser } = useUser();
+
+  const userApi = useUserApi();
 
   const [userPhoto, setUserPhoto] = useState(() => user.photo);
   const [showPassword, toggleShowPassword] = useToggle(false);
@@ -61,7 +66,7 @@ const EditForm = () => {
       return;
     }
 
-    const userProfile = await userApi.editProfile(editFields);
+    const userProfile = await userApi.editProfile(axios, editFields);
     if (userProfile) {
       setUser(userProfile);
       const form = event.target;

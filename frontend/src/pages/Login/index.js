@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Form } from 'components/Form';
-import userApi from 'api/users';
 
 import { useLogo } from 'hooks/useLogo';
 import { useUser } from 'hooks/useUser';
+import { useUserApi } from 'hooks/useUserApi';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,6 +12,8 @@ export default function Login() {
   const logo = useLogo();
 
   const { setIsLoggedIn } = useUser();
+
+  const userApi = useUserApi();
 
   const handleFormData = async (email, password) => {
     const successfulLogin = await userApi.login(email, password);

@@ -1,15 +1,17 @@
-import userApi from 'api/users';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import logo from './devchallenges.png';
 import Spinner from 'components/Spinner';
 import { useUser } from 'hooks/useUser';
+import { useUserApi } from 'hooks/useUserApi';
 
 const Welcome = () => {
   const [loadingProfile, setLoadingProfile] = useState(true);
 
   const { user, setUser, setIsLoggedIn } = useUser();
+
+  const userApi = useUserApi();
 
   const navigate = useNavigate();
 
